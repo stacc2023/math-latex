@@ -1,0 +1,230 @@
+\subsection{Definition of the Derivative}
+\begin{definition}[Definition of the derivative (marsden 6.1.1)]
+A map $f:A\subset \mathbb{R}^n\to \mathbb{R}^m$ is said to be differentiable at $x_0\in A$ if there is a linear function, denoted $Df(x_0):\mathbb{R}^n\to \mathbb{R}^m$ and called the \textbf{\textcolor{orange}{derivative}} of $f$ at $x_0$, such that
+$$\lim_{x\to x_0}\frac{\left\|f(x)-f(x_0)-Df(x_0)(x-x_0)\right\|}{\left\|x-x_0\right\|}=0$$
+In other words, for every $\epsilon>0$ there is a $\delta >0$ such that $x\in A$ and $\left\|x-x_0\right\|<\delta$ implies
+$$\left\|f(x)-f(x_0)-Df(x_0)(x-x_0)\right\|\leq \epsilon \left\|x-x_0\right\|$$
+$x\mapsto f(x_0)+Df(x_0)(x-x_0)$ is supposed to be the \textbf{\textcolor{orange}{best affine approximation}} to $f$ near the point $x_0$.
+\end{definition}
+
+\begin{theorem}[Uniqueness of the derivative (marsden 6.1.2)]
+Let $A$ be an open set in $\mathbb{R}^n$ and suppose $f:A\to \mathbb{R}^m$ is differentiable at $x_0$. Then $Df(x_0)$ is uniquely determined by $f$.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\begin{example}
+If $A=\{x_0\}$, the theorem does not hold.
+\end{example}
+
+\subsection{Matrix representation}
+
+\begin{definition}
+[Definition of the partial derivative (marsden 6.2.1)]
+The \textbf{\textcolor{orange}{partial derivative}} ${\partial f_j}/{\partial x_i}$ is given by the following limit, when the limit exists:
+$$\frac{\partial f_j}{\partial x_i}(x_1,\dots,x_n)=\lim_{h\to 0} \left\{\frac{f_j(x_1,\dots,x_i+h,\dots,x_n)-f_j(x_1,\dots,x_n)}{h}\right\}$$
+\end{definition}
+
+\begin{theorem}
+[Definition of the Jacobian metrix (marsden 6.2.2)]
+Suppose $A\subset \mathbb{R}$ is an open set and $f:A\to \mathbb{R}^m$ is differentiable on $A$. Then the partial derivatives $\partial f_j/\partial x_i$ exist, and the matrix of the linear map $Df(x)$ with respect to the standard bases in $\mathbb{R}^n$ and $\mathbb{R}^m$ is given by
+\begingroup
+\everymath{\displaystyle}
+$$\begin{pmatrix}
+    \frac{\partial f_1}{\partial x_1} & \dots & \frac{\partial f_1}{\partial x_n} \\
+    \vdots & & \vdots \\
+    \frac{\partial f_m}{\partial x_1} & \dots & \frac{\partial f_m}{\partial x_n}
+\end{pmatrix}$$
+\endgroup
+where each partial derivative is evaluated at $x=(x_1,\dots,x_n)$. This matrix called the \textbf{\textcolor{orange}{Jacobian matrix}} of $f$ or the \textbf{\textcolor{orange}{derivative metrix}}.
+\end{theorem}
+
+\begin{definition}
+[Definition of the gradient (marsden 6.2.2)]
+In the case where $m=1$, $Df(x)$ is a $1\times n$ matrix, called the \textbf{\textcolor{orange}{gradient}} of $f$ and denoted by grad$f$ or $\   f$. Then,
+\begingroup
+\everymath{\displaystyle}
+$$\nabla f = \begin{pmatrix}
+    \frac{\partial f}{\partial x_1} & \dots & \frac{\partial f}{\partial x_n}
+\end{pmatrix}$$
+\endgroup
+\end{definition}
+
+\begin{example}
+Let $L:\mathbb{R}^n\to \mathbb{R}^m$ be a linear map. Then $DL(x)=L$.
+\end{example}
+
+\subsection{Continuity of differentiable mappings; differentiable paths}
+
+\begin{theorem}
+[Local Lipschitz property (marsden 6.3.1)]
+Suppose $f:A\subset \mathbb{R}^n\to \mathbb{R}^m$ is differentiable on $A$. Then $f$ is continuous. In fact, for each $x_0\in A$, there are a constant $M>0$ and a $\delta_0>0$ such that $\left\|x-x_0\right\|<\delta_0$ implies $\left\|f(x)-f(x_0)\right\|\leq M\left\|x-x_0\right\|$, which is called the \textbf{\textcolor{orange}{local Lipschitz property}}.
+\end{theorem}
+
+\begin{definition}
+[Curve or Path (marsden 6.3.1)]
+By a \textbf{\textcolor{orange}{curve}} or \textbf{\textcolor{orange}{path}}, we mean a continuous function $c:\mathbb{R}\to \mathbb{R}^m$. If $c$ is differentiable, then $Dc(t):\mathbb{R}\to \mathbb{R}^m$ is represented by the vector associated with the single-column matrix
+\begingroup
+\everymath{\displaystyle}
+$$\begin{pmatrix}
+\frac{dc_1}{dt} \\
+\vdots \\
+\frac{dc_m}{dt}
+\end{pmatrix}$$
+\endgroup
+where $c(t)=(c_1(t),\dots, c_m(t))$. This vector is denoted by $c'(t)$ and is called the \textbf{\textcolor{orange}{tangent vector}} or \textbf{\textcolor{orange}{velocity}} vector to the curve.
+\end{definition}
+
+\subsection{Conditions for differentiablity}
+
+\begin{theorem}
+[Condition for differentiablity (marsden 6.4.1)]
+Let $A\subset \mathbb{R}$ be open and $f:A\to \mathbb{R}^m$. Suppose $f=(f_1,\dots,f_m)$ and each of the partials $\frac{\partial f_j}{\partial x_i}$ exists and continuous on $A$. Then $f$ is differentiable on $A$.
+\end{theorem}
+
+\begin{definition}
+[Definition of directional derivatives (marsden 6.4.2)]
+Let $f$ be real-valued and defined in a neighborhood of $x_0\in \mathbb{R}^n$, and let $e\in \mathbb{R}^n$ be a unit vector. Then
+$$\frac{d}{dt}f(x_0+te)|_{t=0}=\lim_{t\to 0}\frac{f(x_0+te)-f(x_0)}{t}$$
+is called the \textbf{\textcolor{orange}{directional derivative}} of $f$ at $x_0$ in the direction $e$. If $f$ is differentiable, then
+$$\frac{d}{dt}f(x_0+te)|_{t=0}=Df(x_0)\cdot e$$
+\end{definition}
+
+\begin{definition}
+[Definition of tangent plane (marsden 6.4.2)]
+The \textbf{\textcolor{orange}{tangent plane}} to the graph of $f$ at $(x_0,f(x_0))$ described by the equation
+$$z=f(x_0)+Df(x_0)\cdot (x-x_0)$$
+\end{definition}
+
+\begin{example}
+[(marsden 6.4.3)]
+Existence of all directional derivatives at a point does not imply differentiablity. Consider the function
+\[
+f=
+\begin{cases}
+    1 & \text{if }0<y<x^2, \\
+    0 & \text{otherwise}
+\end{cases}
+\]
+Let a unit vector $e=(e_1,e_2)$ be given. $f(e_1t,e_2t)$ is 0 for sufficiently small $t$. Hence, the directional derivative of $f$ at $(0,0)$ is 0 regardless of the direction of $e$.
+\end{example}
+
+\subsection{The chain rule}
+\begin{mytheorem}
+[Chain rule]
+(Marsden 6.5.1) Let $A\subset \mathbb{R}^n$ be open and $f:A\to \mathbb{R}^m$ be differentiable at $x_0\in A$. Let $B\subset \mathbb{R}^m$ be open, $f[A]\subset B$, and $g:B\to \mathbb{R}^p$ be differentiable at $f(x_0)$. Then the composite $g\circ f$ is differentiable at $x_0$ and $D(g\circ f)(x_0)=Dg(f(x_0))\circ Df(x_0)$.
+\end{mytheorem}
+
+\begin{example}
+Suppose
+$$f:\mathbb{R}^2\to \mathbb{R}\text{ given by } (x,y)\mapsto f(x,y)$$
+$$g:\mathbb{R}^2\to \mathbb{R}^2\text{ given by } (r,\theta)\mapsto (r\cos\theta, r\sin\theta)$$
+$$h = f\circ g: \mathbb{R}^2\to \mathbb{R}\text{ given by }(r,\theta)\mapsto f(r\cos\theta, r\sin\theta)$$
+Then
+\begingroup
+\everymath{\displaystyle}
+$$Dh(r,\theta)=
+\begin{pmatrix}
+\frac{\partial f}{\partial x}\cos\theta+\frac{\partial f}{\partial y}\sin\theta & -\frac{\partial f}{\partial x}r\sin\theta + \frac{\partial f}{\partial y}r\cos\theta
+\end{pmatrix}$$
+\endgroup
+\end{example}
+
+
+\begin{myproposition}
+(Marsden 6.6.1) Let $A\subset \mathbb{R}^n$ be open and let $f:A\to \mathbb{R}^m$ and $g:A\to \mathbb{R}$ be differentiable. Then
+\begin{enumerate}[label={(\alph*)}]
+\item $gf$ is differentiable.
+\item For $x\in A$, $D(gf)(x):\mathbb{R}^n\to \mathbb{R}^m$ is given by $D(gf)(x)\cdot e=g(x)(Df(x)\cdot e)+(Dg(x)\cdot e)f(x)$ for all $e\in \mathbb{R}^n$.
+\end{enumerate}
+\end{myproposition}
+
+\begin{myproposition}
+Let $f:A\subset \mathbb{R}^n\to \mathbb{R}$ be differentiable.
+\begin{enumerate}[label={(\alph*)}]
+\item $\nabla f(x)$ is orthogonal to the surface defined by $f(x)=$ constant.
+\item $\nabla f(x)$ is the direction of greatest rate of increase of $f(x)$.
+\end{enumerate}
+\end{myproposition}
+
+\subsection{The mean value theorem}
+
+\begin{mytheorem}[Mean value theorem on Euclidean space]
+Let $f:A\subset \mathbb{R}^n\to \mathbb{R}$ is differentiable on open set $A$.
+For any $x,y\in A$ such that line segment joining $x$ and $y$ lies in $A$, there is a point $c$ on that segment such that
+$$ f(y)-f(x)=Df(c)\cdot (y-x)$$
+\end{mytheorem}
+\begin{proof}
+Let $h:[0,1]\to \mathbb{R}$ be given by $h(t)=f((1-t)x+y)$.
+\end{proof}
+
+\subsection{Taylor's thoerem and higher derivatives}
+\begin{notebox}
+$L(\mathbb{R}^n,\mathbb{R}^m)$ denotes the space of linear maps from $\mathbb{R}^n$ to $\mathbb{R}^m$.
+\end{notebox}
+\begin{mydefinition}[Derivatives of higher order]
+(Marsden 6.8.1) Suppose $f:\mathbb{R}^n\to \mathbb{R}^m$ is differentiable. Then $Df:\mathbb{R}^n\to L(\mathbb{R}^n,\mathbb{R}^m)$; hence $D(Df)(x_0)$ is a linear map from $\mathbb{R}^n$ to $L(\mathbb{R}^n,\mathbb{R}^m)$. We define $B_{x_0}:\mathbb{R}^n\times \mathbb{R}^n\to \mathbb{R}^m$ by setting $B_{x_0}(x_1,x_2)=[D^2f(x_0)(x_1)](x_2)$. 
+\end{mydefinition}
+
+\begin{notebox}
+By a \textbf{\emph{bilinear map}} $B:E\times F\to G$, where $E,F,G$ are vector space, we mean a map that is linear in each variable seperately.
+\end{notebox}
+
+Given a bilinear map $B:\mathbb{R}^n\times \mathbb{R}^m\to \mathbb{R}$, if
+$$ x=\sum_{i=1}^nx_ie_i\quad y=\sum_{j=1}^my_je_j,$$
+then
+\begingroup
+\everymath{\displaystyle}
+$$B(x,y)=(x_1,\dots,x_n)
+\begin{pmatrix}
+a_{11} & \dots & a_{1m}\\
+\vdots & & \vdots\\
+a_{n1} & \dots & a_{nm}
+\end{pmatrix}
+\begin{pmatrix}
+y_1\\
+\vdots\\
+y_m
+\end{pmatrix}$$
+\endgroup
+
+\begin{mytheorem}
+Let $f:A\subset \mathbb{R}^n\to \mathbb{R}$ be twice differentiable on the open set $A$. Then the matrix of $D^2f(x):\mathbb{R}^n\times \mathbb{R}^n\to \mathbb{R}$ with respect to standard basis is given by
+\begingroup
+\everymath{\displaystyle}
+$$\begin{pmatrix}
+\frac{\partial^2 f}{\partial x_1\partial x_2} & \cdots & \frac{\partial^2 f}{\partial x_1\partial x_n}\\
+\vdots & & \vdots\\
+\frac{\partial^2 f}{\partial x_n\partial x_1} & \cdots & \frac{\partial^2 f}{\partial x_n\partial x_n}
+\end{pmatrix}$$
+\endgroup
+where each partial derivative is evaluated at the point $x=(x_1,\dots,x_n)$.
+\end{mytheorem}
+
+\begin{mytheorem}[Symmetry of mixed partials]
+Let $f:A\to \mathbb{R}^m$ be twice differentiable on the open set $A$ with $D^2f$ continuous.
+Then $D^2f$ is symmetric; that is,
+$$D^2f(x)(x_1,x_2)=D^2f(x)(x_2,x_1),$$
+or in terms of components,
+$$\frac{\partial^2 f_k}{\partial x_i\partial x_j}=\frac{\partial^2 f_k}{\partial x_j\partial x_i}.$$
+\end{mytheorem}
+
+\begin{mydefinition}
+A function is said to be \textbf{\emph{of class}} $C^r$ if the first $r$ derivatives exist and are continuous. Also, it said to be \textbf{\emph{smooth}} or \textbf{\emph{of class}} $C^\infty$ if it is of class $C^r$ for all positive integers $r$.
+\end{mydefinition}
+
+\begin{mytheorem}
+[Taylor's theorem]
+Let $f: A\to \mathbb{R}$ be of class $C^r$ for $A\subset \mathbb{R}^n$ an open set. Let $x,y\in A$ and suppose that the segment joining $x$ and $y$ lies in $A$. Then there is a point $c$ on that segment such that
+$$f(y)-f(x)=\sum_{k=1}^{r-1}\frac{1}{k!}D^kf(x)(y-x,\dots,y-x)+\frac{1}{r!}D^rf(c)(y-x,\dots,y-x),$$
+where 
+$$D^kf(x)(y-x,\dots,y-x)=\sum_{i_1,\dots,i_k=1}^n\left(\frac{\partial^kf}{\partial x_{i_1}\cdots x_{i_k}}\right)(y_{i_1}-x_{i_1})\cdots (y_{i_k}-x_{i_k}).$$
+Setting $y=x+h$, we can write the Taylor formula as
+$$f(x+h)=f(x)+Df(x)\cdot h+\dots+\frac{1}{(r-1)!}D^{r-1}f(x)\cdot (h,\dots,h)+R_{r-1}(x,h)$$
+where $R_{r-1}(x,h)$ is the remainder such that
+$$\frac{R_{r-1}(x,h)}{\left\|h\right\|^{r-1}}\to 0\quad \text{as}\quad h\to 0.$$
+By $r\to \infty$, we are led to form the \textbf{\emph{Taylor series}} about $x_0$.
+If the Taylor converges in a neighborhood of $x_0$, that is, the reaminder converges to 0 as $r\to \infty$, we say that $f$ is \textbf{\emph{real analytic}} at $x_0$.
+\end{mytheorem}
+

@@ -1,0 +1,326 @@
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Section 51 ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{51. Homotopy of paths}
+
+\begin{mydefinition}
+By the \textbf{\emph{unit interval}} $I$, we mean the closed interval $[0,1]$. 
+\end{mydefinition}
+
+\begin{mytheorem}
+The unit interval has the following properties:
+\begin{enumerate}[label={(\alph*)}]
+\item $I$ is a complete metric space. The metric on $I$ is given by $d(x,y)=|x-y|$.
+\item $I$ is compact, contractible, path connected, and locally path connected.
+\end{enumerate}
+\end{mytheorem}
+
+\begin{mydefinition}
+[Homotopic]
+Let $X,Y$ be topological spaces and $f,f':X\to Y$ continuous. We say that $f$ is \textbf{\emph{homotopic}} to $f'$ if there is a continuous map $F:X\times I\to Y$ such that
+$$F(x,0)=f(x)\quad \text{and}\quad F(x,1)=f'(x)$$
+for each $x$. The map $F$ is called a \textbf{\emph{homotopy}} between $f$ and $f'$, denoted by $f\simeq f'$. In this case, if $f'$ is constant, we say that $f$ is \textbf{\emph{nulhomotopic}}.
+\end{mydefinition}
+    
+\begin{mydefinition}
+[Path]
+If a map $f:[0,1]\to X$ is continuous, $f(0)=x_0$, and $f(1)=x_1$, then we say $f$ is a \textbf{\emph{path}} in $X$ from initial point $x_0$ to final point $x_1$.
+\end{mydefinition}
+    
+\begin{mydefinition}
+[Path homotopic]
+Two path $f,f':[0,1]=I\to X$ are said to be \textbf{\emph{path homotopic}} if thay have the same initial point $x_0$ and the same point $x_1$, and if there is a continuous map $F:I\times I\to x$ such that
+$$F(s,0)=f(s)\quad \text{and}\quad F(s,1)=f'(s),$$
+$$F(0,t)=x_0\quad \text{and}\quad F(1,t)=x_1,$$
+for each $s\in I$ and each $t\in I$. We call $F$ a \textbf{\emph{path homotopy}} between $f$ and $f'$, denoted by $f\simeq_p f'$.
+\end{mydefinition}
+
+
+\begin{myproposition}
+$\simeq$ and $\simeq_p$ are equivalence relations.
+\end{myproposition}
+\begin{proof}
+\begin{enumerate}[label={(\alph*)}]
+\item (reflexive) $F(x,t)=f(x)$.
+\item (symetric) $G(x,t) = F(x,1-t)$.
+\item (transitive) $G(x,t)=\begin{cases}
+F(x,2t) & \text{for }t\in [0, \frac{1}{2}] \\
+F'(x,2t-1) & \text{for }t\in [\frac{1}{2},1]
+\end{cases}$. By pasting lemma, $G$ is continuous.
+\end{enumerate}
+\end{proof}
+
+\begin{example}
+Let $f,g$ be any map of a space $X$ into $\mathbb{R}^2$. The map $F(x,t)=(1-t)f(x)+tg(x)$ is called a \textbf{\emph{straight-line homotopy}}. More generally, let $A$ be any convex subspace of $\mathbb{R}^n$. Then any two path $f,g$ in $A$ from $x_0$ to $x_1$ are path homotopic in $A$.
+\end{example}
+
+\begin{example}
+Let $X$ denote the \textbf{\emph{punctured plane}}, $\mathbb{R}^2 \{0\}$, and let
+$$f(s)=(\cos \phi s,\sin \phi s),$$
+$$g(s)=(\cos \phi s,2\sin \phi s),$$
+$$h(s)=(\cos \phi s,-\sin \phi s)$$
+Then $f\simeq g$, but $f,h$ are not path homotopic.
+\end{example}
+
+\begin{mydefinition}
+If $f$ is a path in $X$ from $x_0$ to $x_1$, and if $g$ is a path in $X$ from $x_1$ to $x_2$, we define the \textbf{\emph{product}} $f*g$ of $f$ and $g$ to be the path $h$ given by the equations
+$$h(s) = \begin{cases}
+f(2s) & \text{for }s\in [0,\frac{1}{2}] \\
+g(2s-1) & \text{for }s\in [\frac{1}{2},1]
+\end{cases}$$
+\end{mydefinition}
+
+\begin{mylemma}
+The product operation on path-homotopy classes is well-defined by the equation $[f]*[g]=[f*g]$.
+\end{mylemma}
+\begin{proof}
+Let $F$ and $G$ be the path homotopy between $f,f'$ and $g,g'$ respectively. Define $H(s,t)=\begin{cases}
+F(2s,t) & \text{for }s\in [0,\frac{1}{2}] \\
+G(2s-1,t) & \text{for }s\in [\frac{1}{2},1]
+\end{cases}$. Then $H$ is well-defined; and continuous by the pasting lemma; that is, it is a path homotopy between $f*g$ and $f'*g'$.
+\end{proof}
+
+\begin{mylemma}
+Suppose
+\begin{enumerate}[label={(\alph*)}]
+\item $k:X\to Y$ is a continuous map;
+\item $F$ is a path homotopy in $X$ between the paths $f$ and $f'$.
+\end{enumerate}
+Then $k\circ F$ is a path homotopy in $Y$ between the paths $k\circ f$ and $k\circ f'$.
+\end{mylemma}
+\begin{proof}
+$k\circ F$ is continuous, $k(F(s,0)) = k(f(s))$, and $k(F(s,1)) = k(f'(s))$.
+\end{proof}
+
+\begin{mylemma}
+Suppose
+\begin{enumerate}[label={(\alph*)}]
+\item $k:X\to Y$ is a continuous map;
+\item $f$ and $g$ are paths in $X$ with $f(1)=g(0)$.
+\end{enumerate}
+Then
+$$ k\circ (f*g)=(k\circ f)*(k\circ g).$$
+\end{mylemma}
+The proof is trivial.
+
+\begin{mylemma}
+If $[a,b]$ and $[c,d]$ are two intervals in $\mathbb{R}$, there are unique numbers $m,k\in \mathbb{R}$ that define the map $p:[a,b]\to [c,d]$, given by $p(x)=mx+k$. We call it the \textbf{\emph{positive linear map}} of $[a,b]$ to $[c,d]$. This concept is closed under the inverse map and composition of maps.
+\end{mylemma}
+
+\begin{notebox}
+$e_x: I\to X$ denote the constant path given by $e_x = x$.
+\end{notebox}
+\begin{notebox}
+$i:I\to I$ denote the identity map given by $i(s) = s$ for all $s\in I$.
+\end{notebox}
+
+\begin{mytheorem}
+The operation $*$ has the following properties:
+\begin{enumerate}[label={(\alph*)}]
+\item (associativity) If $[f]*([g]*[h])$ is defined, then so is $([f]*[g])*[h]$, and they are equal.
+\item (right and left identities) Let $e_x:I\to X$ denote the constant path given by $e_x=x$. If $f$ is a path from $x_0$ to $x_1$, then
+$$[f]*[e_{x_1}]=[f]\quad \text{and}\quad [e_{x_0}]*[f]=[f].$$
+\item (inverse) Given the path $f$ in $X$ from $x_0$ to $x_1$, let $\overline{f}$ be the path defined by $\overline{f}(s)=f(1-s)$. It is called the \textbf{\emph{reverse}} of $f$. Then
+$$[f]*[\overline{f}]=[e_{x_0}]\quad \text{and}\quad [\overline{f}]*[f]=[e_{x_1}].$$
+\end{enumerate}
+\end{mytheorem}
+\begin{proof}
+To prove (1), define a map $k_{a,b}:I\to I\quad 0<a<b<1$ as follows:
+\begin{enumerate}[label={(\alph*)}]
+\item A positive linear map of $[0,a]$ to $I$ followed by $f$;
+\item a positive linear map of $[a,b]$ to $I$ followed by $g$;
+\item a positive linear map of $[b,1]$ to $I$ followed by $h$.
+\end{enumerate}
+For $0<c<d<1$, $k_{c,d} \simeq_p k_{a,b}$. Define $p:I\to I$ as follows:
+\begin{enumerate}[label={(\alph*)}]
+\item A positive linear map of $[0,a]$ to $[0,c]$;
+\item a positive linear map of $[a,b]$ to $[c,d]$;
+\item a positive linear map of $[b,1]$ to $[d,1]$.
+\end{enumerate}
+If $i:I\to I$ is the identity map, then $p \simeq_p i$. Suppose $P$ is a path-homotopy in $I$ between $p$ and $i$. Then $k_{c,d}\circ P$ is a path-homotopy in $X$ between $k_{a,b}$ and $k_{c,d}$. Since $f*(g*h) = k_{a,b}$ where $a=1/2$ and $b=3/4$, and $(f*g)*h=k_{c,d}$ where $c=1/4$ and $d=1/2$, the associativity property holds.\\
+To prove (2), since $I$ is convex, we see that $[e_0 * i] = [i]$. By the provious lemma, $f\circ i$ and $f\circ (e_0* i)$ are path-homotopic Consequently,
+$$[f] = [f\circ i] = [f\circ e_0*i] = [(f\circ e_0) * (f\circ i)] = [f\circ e_0]* [f\circ i] = [e_{x_0}] * [f].$$
+A similar argument show that $[f]*[e_{x_1}]=[f]$.\\
+To prove (3), note that $[i*\overline{i}]=[e_0]$. Therefore,
+$$[e_{x_0}]=[f\circ e_0]=[f\circ (i*\overline{i})]=[f\circ i]*[f\circ \overline{i}]=[f]*[\overline{f}].$$
+A similar argument show that $[\overline{f}]*[f]=[e_{x_1}]$.
+\end{proof}
+
+
+\begin{myproposition}
+[Exercise 1] If $h,h':X\to Y$ are homotopic and $k,k'$ are homotopic, then $k\circ h$ and $k'\circ h'$ are homotopic.
+\end{myproposition}
+
+\begin{myproposition}
+[Exercise 3]
+A space $X$ is said to be \textbf{\emph{contractible}} if the identity map $i_X:X\to X$ is nulhomotopic.
+\begin{enumerate}[label={(\alph*)}]
+\item Show that $I$ and $\mathbb{R}$ are contractible.
+\item Show that a contractible space is path connected.
+\item Show that if $Y$ is contractible, then for any $X$, the set $[X,Y]$ has a single element.
+\item Show that if $X$ is contractible and $Y$ is path connected, then $[X,Y]$ has a single element.
+\end{enumerate}
+\end{myproposition}
+\clearpage
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Section 52 ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{52. The fundamental group}
+\begin{notebox}
+\textbf{\emph{monomorphism}}: homomorphism + injective. \textbf{\emph{epimorphism}}: homomorphism + surjective.
+\end{notebox}
+
+\begin{mydefinition}
+Let $X$ be a space, $x_0\in X$. A path in $X$ that begins and ends at $x_0$ is called a \textbf{\emph{loop}} based at $x_0$. The set of path homotopy classes of loops based at $x_0$, with the operation $*$, is called the \textbf{\emph{fundamental group}} of $X$ relative to the \textbf{\emph{base point}} $x_0$. It is denoted by $\pi_1(X,x_0)$, called the \textbf{\emph{first homotopy group}} of $X$.
+\end{mydefinition}
+\begin{example}
+The unit ball has trivial fundamental group.
+\end{example}
+
+\begin{mydefinition}
+Let $\alpha$ be a path in $X$ from $x_0$ to $x_1$. We define a map $\hat{\alpha}:\pi_1(X,x_0)\to \pi_1(X,x_1)$ by $\hat{\alpha}([f])=[\hat{\alpha}]*[f]*[\alpha]$.
+\end{mydefinition}
+
+\begin{mytheorem}
+The map $\hat{\alpha}$ is a group isomorphism.
+\end{mytheorem}
+\begin{proof}
+The proof for homomorphism is trivial. To prove bijectivity, consider $\hat{\overline{\alpha}}$.
+\end{proof}
+
+\begin{mycorollary}
+If $X$ is path connected and $x_0$ and $x_1$ are two points of $X$, then $\pi_1(X,x_0)$ is isomorphic to $\pi_1(X,x_1)$.
+\end{mycorollary}
+
+\begin{mydefinition}
+A space $X$ is said to be \textbf{\emph{simply connected}} if it is a path-connnected space and if $\pi_1(X,x_0)$ is trivial (one-element) group for some $x_0\in X$, and hense for every $x_0\in X$, write $\pi_1(X,x_0)=0$.
+\end{mydefinition}
+
+\begin{mylemma}
+In a simply connected space $X$, any two paths having the same initial and final points are path homotopic.
+\end{mylemma}
+\begin{proof}
+Let $\alpha$ and $\beta$ be two paths from $x_0$ to $x_1$. Then $[\alpha*\overline{\beta}]*[\beta]=[e_{x_0}]*[\beta]$.
+\end{proof}
+
+\begin{notebox}
+Suppose that $h: X\to Y$ is a continuous map that $h(x_0)=y_0$. Then we write $h:(X,x_0)\to (Y,y_0)$.
+\end{notebox}
+
+\begin{mydefinition}
+Let $h:(X,x_0)\to (Y,y_0)$ be a continuous map. Define $h_*:\pi_1(X,x_0)\to \pi_1(Y,y_0)$ by $h_*([f])=[h\circ f]$. The map is called the \textbf{\emph{homomorphism induced by h}}, relative to the base point $x_0$.
+\end{mydefinition}
+
+\begin{remark}
+$h_*$ depends not only on the map $h:X\to Y$ but also on the choice of the base point $x_0$.
+\end{remark}
+
+\begin{mytheorem}
+If $h:(X,x_0)\to (Y,y_0)$ and $k:(Y,y_0)\to (Z,z_0)$ are continuous, then $(k\circ h)_*=k_*\circ h_*$. If $i:(X,x_0)\to (X,x_0)$ is the identity map, then $i_*$ is the identity homomorphism.
+\end{mytheorem}
+\begin{proof}
+The proof is trivial.
+\end{proof}
+
+\begin{mycorollary}
+If $h$ is a homeomorphism, then $h_*$ is an isomorphism.
+\end{mycorollary}
+\begin{proof}
+$h^{-1}_*$ is the inverse of $h_*$.
+\end{proof}
+
+\begin{myproposition}
+[Exercise 4]
+Let $A\subset X$; suppose $r:X\to A$ is a continuous map such that $r(a)=a$ for each $a\in A$. (The map $r$ is called a \textbf{\emph{retraction}} of $X$ onto $A$) If $a_0\in A$, show that
+$$ r_*:\pi_1(X,a_0)\to \pi_1(A,a_0)$$
+is surjective.
+\end{myproposition}
+
+\begin{mydefinition}
+$G$ is called a \textbf{\emph{topological group}} if it is both a topological space and a group such that the group operation map
+$$G\times G\to G,\quad (x,y)\mapsto x\cdot y$$
+and the inverse map
+$$G\times G,\quad x\mapsto x^{-1}$$
+are continuous maps with respect to the topology on $G$ and the product topology on $G\times G$.
+\end{mydefinition}
+
+\begin{myproposition}
+[Exercise 7]
+Let $G$ be a topological group with operation $\cdot$ and identity element $x_0$. Let $\Omega (G,x_0)$ denote the set of all loops in $G$ based at $x_0$. If $f,g\in \Omega (G,x_0)$, let us define a loop $f\otimes g$ by the rule
+$$(f\otimes g)(s)=f(s)\cdot g(s).$$
+\begin{enumerate}[label={(\alph*)}]
+\item Show that this operation makes the set $\Omega (G,x_0)$ into a group.
+\item Show that rhis operation induces a group operation $\otimes$ on $\pi_1 (G,x_0)$.
+\item Show that the two group operation $*$ and $\otimes$ on $\pi_1(G,x_0)$ are the same.[Hint: Compute $(f*e_{x_0})\otimes (e_{x_0}*g)$]
+\item Show that $\pi_1(G,x_0)$ is abelian.
+\end{enumerate}
+\end{myproposition}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Section 53 ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{53. Covering spaces}
+\begin{mydefinition}
+Let $p:E\to B$ be a continuous surjective map. The open set $U$ of $B$ is said to be \textbf{\emph{evenly covered}} by $p$ if the inverse image $p^{-1}(U)$ can be written as the union of disjoint open sets $V_\alpha$ in $E$ such that for each $\alpha$, the restriction of $p$ to $V_\alpha$ is a homeomorphism of $V_\alpha$ onto $U$. The collection $\{V_\alpha\}$ will be called a partition of $p^{-1}(U)$ into \textbf{\emph{slices}}.
+\end{mydefinition}
+
+\begin{mydefinition}
+Let $p:E\to B$ be continuous and surjective. If every point $b$ of $B$ has a neighborhood $U$ that is evenly covered by $p$, then $p$ is called a \textbf{\emph{covering map}}, and $E$ is said to be a \textbf{\emph{covering space}} of $B$.
+\end{mydefinition}
+
+\begin{myproposition}
+For each $b\in B$, the subspace $p^{-1}(b)$ has the discrete topology.
+\end{myproposition}
+\begin{proof}
+Munkres p336
+\end{proof}
+
+\begin{myproposition}
+A covering map is open.
+\end{myproposition}
+
+\begin{example}
+For any space $X$, the identity map $i:X\to X$ is a covering map.
+\end{example}
+
+\begin{mytheorem}
+The map $p:\mathbb{R}\to S^1$ given by $p(x)=(\cos 2\pi x,\sin 2\pi x)$ is a covering map.
+\end{mytheorem}
+\begin{proof}
+Let $U=\{(x,y)\mid x\in (0,1],y\in (-1,1)\}$. Then $p^{-1}(U)$ is the union of intervals of the form $V_n=(n-\frac{1}{4},n+\frac{1}{4})$, for all $n\in \mathbb{Z}$. We easily see that $p|\overline{V_n}$ is bijective(by IVT), and is closed(since $\overline{V_n}$ is compact), that is, is a homeomorphism of $\overline{V}$ with $\overline{U}$. In particular, $p|V_n$ is a homeomorphism of $V_n$ with $U$. Similar argument can be applied to the upper, left, down side of $S^1$. They cover $S^1$ and each of them is evenly covered by $p$.
+\end{proof}
+
+\begin{example}
+Let $p:S^1\to S^1$ be defined on the complex plane, given by $p(z)=z^2$. Then $p$ is a covering map.
+\end{example}
+
+\begin{mydefinition}
+Let $p:E\to B$ is a \textbf{\emph{local homeomorphism}} if for each $x\in E$, there is a neighborhood $V$ of $x$ such that $p|V$ is a homeomorphism
+\end{mydefinition}
+
+\begin{myproposition}
+A covering map is a local homeomorphism.
+\end{myproposition}
+\begin{example}
+$p:\mathbb{R}_+\to S^1$ given by $p(x)=(\cos 2\pi x,\sin 2\pi x)$ is surjective, and local homeomorphism, but is not a covering map. This example implies that the restriction of a covering map may not be a covering map.
+\end{example}
+
+\begin{mytheorem}
+Let $p:E\to B$ be a covering map. If $B_0$ is a subspace of $B$, and if $E_0=p^{-1}(B_0)$, then the map $p_0:E_0\to B_0$ obtained by restricting $p$ is a covering map.
+\end{mytheorem}
+\begin{proof}
+Munkres theorem 53.2
+\end{proof}
+
+\begin{mytheorem}
+If $p:E\to B$ and $p':E'\to B'$ are covering maps, then $p\times p':E\times E'\to B\times B'$ is a covering map.
+\end{mytheorem}
+\begin{exercise}
+$T=S^1\times S^1$ is called the \textbf{\emph{torus}}. The product map $p\times p:\mathbb{R}\times \mathbb{R}\to S^1\times S^1$ is a covering map of torus by the plane $\mathbb{R}^2$.
+\end{exercise}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Section 54 ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Section 54. The fundamental group of the circle}

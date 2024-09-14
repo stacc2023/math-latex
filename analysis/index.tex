@@ -1,0 +1,122 @@
+\documentclass{article}
+\input{../header.tex}
+
+\begin{document}
+\begin{multicols}{2}
+
+\tableofcontents
+\clearpage
+
+\input{./topology.tex}
+\input{./sequence and series.tex}
+\input{./continuity.tex}
+\input{./differentiation.tex}
+\input{./integration.tex}
+
+\section{SEQUENCE AND SERIES OF FUNCTIONS}
+\begin{notebox}
+The functions mentioned in this chapter are all complex-valued functions.
+\end{notebox}
+
+\subsection{Convergence of a sequence of functions}
+
+% PMA 7.1
+\begin{definition}
+A sequence functions $\{f_n\}$ on a set $E$ converges \textbf{\textcolor{orange}{pointwise}} on $E$ to a function $f$(we write $f_n\to f$):
+$$\lim_{n\to \infty}f_n(x) = f(x),\ \forall x\in E$$
+\end{definition}
+
+% PMA 7.7, 
+\begin{definition}
+$\{f_n\}$ converges \textbf{\textcolor{orange}{uniformly}} to $f$(we write $f_n\rightrightarrows f)$:
+$$\forall \epsilon>0, \exists N\in \mathbb{Z}: \forall x\in E,n\geq N \implies |f_n(x)-f(x)|<\epsilon$$
+In other word,
+$$\forall \epsilon>0, \exists N\in \mathbb{Z}:n\geq N \implies \sup_{x\in E}|f_n(x)-f(x)|<\epsilon$$
+Alternative definition(Cauchy criterion in $\mathbb{R}$):
+$$\forall \epsilon>0, \exists N\in \mathbb{Z}:\forall x\in E, n,m\geq N \implies |f_n(x)-f_m(x)|<\epsilon$$
+On the other hand, the series $\sum f_n(x)$ converges uniformly if the sequence $\{s_n\}$ defined by $\displaystyle \sum_{i=1}^n f_i(x)=s_n$ converges uniformly.
+\end{definition}
+
+\begin{theorem}
+(\textbf{\emph{Weierstrass M-test}}) Suppose $|f_n(x)|\leq M_n$. Then $\sum f_n$ converges uniformly if $\sum M_n$ converges.
+\end{theorem}
+
+\subsection{Uniform converges and continuity}
+
+\begin{theorem}
+Suppose $f_n\rightrightarrows f$ on a set $E$ in a metric space, and let $x\in E'$. Then $$\lim_{t\to x}\lim_{n\to \infty}f_n(t) = \lim_{n\to \infty}\lim_{t\to x}f_n(t)$$
+\end{theorem}
+\begin{proof}
+Let $\epsilon>0$ be given, and denote $\lim_{t\to x}$ by $A_n$.
+There exists $N$ such that $n,m\geq N$, $t\in E$ implies $|f_n(t)-f_m(t)<\epsilon$.
+Letting $t\to x$, we obtain $|A_n-A_m|<\epsilon$.
+By the Cauchy criterion, $\lim_{n\to \infty}\lim_{t\to x}f_n(t)$ exists, say $A$.
+Then $|f(t)-A|\leq |f(t)-f_n(t)|+|f_n(t)-A_n| + |A_n - A| < \epsilon$ for some $N$ and $\delta$, whenever $n\geq N$ and $t\in D(x, \delta)\cap E$.
+\end{proof}
+
+\begin{notebox}
+$C(E)$ denotes the set of functions with domain $E$ and codomain $\mathbb{C}$.
+\end{notebox}
+
+\begin{theorem}
+If $\{f_n\}$ is a sequence in $C(E)$, and if $f_n\rightrightarrows f$, then $f\in C(E)$.
+\end{theorem}
+\begin{proof}
+$$\lim_{t\to x}\lim_{n\to \infty}f_n(t) = \lim_{t\to x}f(t)$$
+On the other hand, 
+$$\lim_{n\to \infty}\lim_{t\to x}f_n(t)=\lim_{n\to \infty}f_n(x)=f(x)$$
+By the previous theorem, $\lim_{t\to x}f(t)=f(x)$, which proves the proposition.
+\end{proof}
+
+\begin{theorem}
+Suppose $K$ is compact, $\{f_n\}$ is a sequence in $C(K)$, $f_n\to f$ where $f\in C(K)$, and $f_n(x)\geq f_{n+1}(x)$ for all $x\in K$, $n=1,2,\dots$. Then $f_n\rightrightarrows f$.
+\end{theorem}
+\begin{proof}
+Put $g_n=f_n-f$. Let $\epsilon>0$ be given and let $K_n$ be the set off all $x\in K$ with $g_n(x)\geq \epsilon$. Since $g_n$ is continuous, $K_n(=g_n^{-1}[\epsilon,+\infty])$ compact(thm \ref{thm:equivalent_definition_of_continuity}), hense compact(thm \ref{thm:closed_subset_implies_compact}). Since $g_n(x)\to 0$, for fixed $x\in K$, $x\notin K_n$, i.e., $\bigcap K_n$ is empty. By theorem \ref{thm:fip_implies_nonempty}, $K_N$ is empty for some $N$. It follows that $0\leq g_n(x)<\epsilon$ for all $x\in K$ and all $n\geq N$.
+\end{proof}
+
+\clearpage
+
+\section{SOME SPECIAL FUNCTIONS}
+\begin{notebox}
+\begin{definition}[123]
+test\\
+test2
+\end{definition}
+\end{notebox}
+
+\begin{definition}
+test3
+\end{definition}
+\begin{definition}[Test]
+test4
+\end{definition}
+\clearpage
+
+\section{Differentiable mapping}
+\input{differentiable mapping.tex}
+\clearpage
+
+\section{FUNCTIONS OF SEVERAL VARIABLES}
+\clearpage
+
+\section{INTEGRATION OF DIFFERENTIAL FORMS}
+\clearpage
+
+\section{THE LEBESGUE THEORY}
+\clearpage
+
+\section{0905 Lecture}
+\begin{mydefinition}
+Let $\Omega\subset \mathbb{R}^n$ be open, $f:\Omega\to \mathbb{R}^m$. $f$ is \textbf{\emph{differentiable}} if there exists a linear map $T:\mathbb{R}^n\to \mathbb{R}^m$ such that given $\epsilon>0$,
+$$0<|x-x_0|<\delta \implies |f(x)-f(x_0)-T(x-x_0)|<\epsilon$$
+In this case, $T$ is called a \textbf{\emph{derivative}} of $f$ at $x_0$, denoted by $T=Df(x_0)$.
+\end{mydefinition}
+
+\begin{mydefinition}
+
+\end{mydefinition}
+
+\end{multicols}
+\end{document}
+

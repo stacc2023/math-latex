@@ -1,0 +1,43 @@
+\documentclass{article}
+\input{../header.tex}
+
+\begin{document}
+\begin{multicols}{2}
+\tableofcontents
+
+\section{Munkres Chapter 2}
+\input{Munkres chapter 2.tex}
+\clearpage
+
+\section{Munkres Chapter 3}
+\input{Munkres chapter 3.tex}
+\clearpage
+
+\section{Munkres Chapter 9}
+\input{Munkres chapter 9.tex}
+\clearpage
+
+\subsection{Lecture 0909}
+
+\begin{mytheorem}
+$x\mapsto (\cos 2\pi x, \sin 2\pi x)$ is a covering map.
+\end{mytheorem}
+\begin{proof}
+
+\end{proof}
+\clearpage
+
+\begin{example}
+$$exp:\mathbb{C}\to \mathbb{C}\backslash \{0\}$$
+$$z\mapsto e^z$$
+
+$\mathbb{C}\simeq \mathbb{R}^2$ and $\mathbb{C}\backslash \{0\} \simeq \mathbb{R}^+\times S$ given by $(x,y)\mapsto (e^x,e^{iy})$. It is a product map of a homeomorphism $\mathbb{R}\to \mathbb{R}^+$ and a covering map $\mathbb{R}\to S$.
+\end{example}
+
+\begin{proof}
+[Lemma 54.1]
+$B=\bigcup_{j\in J}u_j$ where open sets $u_j\subset B$ are evenly covered by $p$. $I=\alpha^{-1}(u_{j_1})\cup\dots\cup\alpha^{-1}(u_{j_N})$ since compactness of $I$. $\exists 0<s_0<s_1<\dots<s_M=1$ s.t. $[s_i,s_{i+1}]\subset \alpha^{-1}(u_{j_k})$ for some $k$ by Lebesque's lemma. Assume that there exists a lifting of $\alpha$ $\tilde{\alpha}:[0,s_i]\to E$ with $\tilde{\alpha}(0)=e_0$. $\alpha([s_i,s_{i+1}])\subset U\subset B$ for some evenly covered open set $U$.
+\end{proof}
+
+\end{multicols}
+\end{document}

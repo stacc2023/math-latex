@@ -1,0 +1,81 @@
+\section{THE RIEMANN-STIELTJES INTEGRAL}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- DEFINITION AND EXISTSANCE OF THE INTEGRAL ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{DEFINITION AND EXISTSANCE OF THE INTEGRAL}
+
+\begin{definition}
+Let $[a,b]$ be a given interval. By a \textbf{\textcolor{orange}{partition}} $P$ of $[a,b]$ we mean a finite set of points $x_0,x_1,\dots,x_n$ where $a=x_0\leq x_1\leq \dots \leq x_{n-1}\leq x_n=b$. We write $\Delta x_i=x_i-x_{i-1}$ for $i=1,\dots,n$. Suppose $f$ is a bounded real function on $[a,b]$. Corresponding to each partition $P$ of $[a,b]$ we put $\displaystyle M_i=\sup_{x_{i-1}\leq x\leq x_i}f(x)$, $\displaystyle m_i=\inf_{x_{i-1}\leq x\leq x_i}f(x)$, $\displaystyle U(P,f)=\sum_{i=1}^nM_i\Delta x_i$, and $\displaystyle L(P,f)=\sum_{i=1}^nm_i\Delta x_i$.$\displaystyle \upint_a^bfdx=\inf U(P,f)$ and $\displaystyle \lowint_a^bfdx=\sup L(P,f)$ are called the \textbf{\textcolor{orange}{upper}} and \textbf{\textcolor{orange}{lower Riemann integrals}} of $f$ over $[a,b]$, repectively. If the upper and lower integrals are equal, we say that $f$ is \textbf{\textcolor{orange}{Riemann integrable}} on $[a,b]$, we write $f\in \mathscr{R}$($\mathscr{R}$ denotes the set of Riemann integrable functions), and we denoted the common value of them by $\displaystyle \int_a^bfdx$, which is called the \textbf{\textcolor{orange}{Riemann integral}} of $f$ over $[a,b]$. Clearly, if $f$ is bounded, then $L(P,f)$ and $U(P,f)$ exist.
+\end{definition}
+
+\begin{definition}
+Let $\alpha$ be a monotonically increasing function on $[a,b]$. Corresponding to each partition $P$ of $[a,b]$, we write $\Delta \alpha_i=\alpha(x_i)-\alpha(x_{i-1})$. For any real function $f$ which is bounded on $[a,b]$ we put $\displaystyle U(P,f,\alpha)=\sum_{i=1}^nM_i\Delta\alpha_i$ and $\displaystyle L(P,f,\alpha)=\sum_{i=1}^nm_i\Delta\alpha_i$. Then $\displaystyle \int_a^bfd\alpha$ is called the \textbf{\textcolor{orange}{Riemann-Stieltjes integral}} of $f$ with respect to $\alpha$ over $[a,b]$. If it exists, we say $f$ is integrable with respect to $\alpha$, in the Riemann sense, and write $f\in \mathscr{R}(\alpha)$.
+\end{definition}
+
+\begin{definition}
+We say that the partition $P^*$ is a \textbf{\textcolor{orange}{refinement}} of $P$ is $P^*\supset P$. If $P^*=P_1\cup P_2$, it is called the \textbf{\textcolor{orange}{common refinement}} of $P_1$ and $P_2$.
+\end{definition}
+
+\begin{theorem}
+If $P^*$ is a refinement of $P$, then $L(P,f,\alpha)\leq L(P^*,f,\alpha)\leq U(P^*,f,\alpha)\leq U(P,f,\alpha)$.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}
+$\displaystyle \lowint_a^bfd\alpha \leq \upint_a^bfd\alpha$.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem} \label{thm:integrability_criterion}
+$f\in \mathscr{R}(\alpha)$ on $[a,b]$ \textbf{\emph{if and only if}} for every $\epsilon>0$ there exists a partition $P$ such that $U(P,f,\alpha)-L(P,f,\alpha)<\epsilon$.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}
+If the right-hand side of thoerem \Ref{thm:integrability_criterion} holds
+\begin{enumerate}[label={(\alph*)}]
+\item for some $P$ and some $\epsilon$, then it also holds with the same $\epsilon$ for every refinement of $P$;
+\item for $P=\{x_0,\dots,x_n\}$ and if $s_i$, $t_i$ are arbitrary points in $[x_{i-1},x_i]$, then $\displaystyle \sum_{i=1}^n|f(s_i)-f(t_i)|\Delta \alpha<\epsilon$.
+\item If $f\in \mathscr{R}(\alpha)$ and (b) holds, then $\displaystyle \left|\sum_{i=1}^{n}f(t_i)\Delta \alpha_i - \int_{a}^{b}fdx \right|<\epsilon$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}
+If $f$ is continuous on $[a,b]$ then $f\in \mathscr{R}(\alpha)$ on $[a,b]$.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}
+If $f$ is monotonic on $[a,b]$ and if $\alpha$ is continuous on $[a,b]$, then $f\in \mathscr{R}(\alpha)$.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}
+Suppose $f$ is bounded on $[a,b]$, $f$ has only finitely many points of discontinuity on $[a,b]$, and $\alpha$ is continuous at every point at which $f$ is discontinuous. Then $f\in \mathscr{R}(\alpha)$.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}
+Suppose $f\in \mathscr{R}(\alpha)$ on $[a,b]$, $m\leq f\leq M$, $\phi$ is continuous on $[m,M]$, and $h(x)=\phi(f(x))$ on $[a,b]$. Then $h\in \mathscr{R}(\alpha)$ on $[a,b]$.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\clearpage

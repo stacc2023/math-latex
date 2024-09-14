@@ -1,0 +1,339 @@
+
+\section{BASIC TOPOLOGY}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Set theory ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Set theory}
+
+\begin{definition}[pma 2.1, 2.2, 2.3]
+For $f:A\to B$
+\begin{enumerate}[label={(\arabic*)}]
+\item $f$: \textbf{\emph{function}} from $A$ to $B$(or \textbf{\emph{mapping}} of $A$ \textbf{\emph{into}} $B$)
+\item $A$: \textbf{\emph{domain}} of $f$
+\item $f(x\in A)$: \textbf{\emph{value}} of $f$
+\item $f[A]$: \textbf{\emph{range}} of $f$
+\item $f[E\subset A]$: \textbf{\emph{image}} of $E$ under $f$
+\item If $f[A]=B$, we say that $f$ maps $A$ \textbf{\emph{onto}} $B$.
+\item $f^{-1}[E]$: \textbf{\emph{inverse}} image of $E$ under $f$
+\item If for $y\in B$ $f^{-1}(y)$ consists of at most one element of $A$, we say that $f$ is a \textbf{\emph{one-to-one}} mapping of $A$ into $B$.
+\item If there exists a one-to-one mapping $A$ onto $B$, we say that $A$ and $B$ can be put into \textbf{\emph{one-to-one correspondence}}, have the same \textbf{\emph{cardinal number}}, or are \textbf{\emph{equivalent}}(written as $A\sim B$), which has the following properties: 
+    \begin{enumerate}[label={(\alph*)}]
+    \item reflexive: $A\sim A$.
+    \item symmetric: If $A\sim B$, then $B\sim A$.
+    \item transitive: If $A\sim B$ and $B\sim C$, then $A\sim C$.
+    \end{enumerate}
+Any \textbf{\emph{relation}} with these properties is called an \textbf{\emph{equivalence}} relation.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[pma 2.4]
+Let $J_n:=\{1,2,\dots,n\}$, $J:=\{1,2,\dots\}$, $A$ be an any set. Then
+\begin{enumerate}[label={(\arabic*)}]
+\item $A$ is \textbf{\emph{finite}} if $A\sim J_n$ for some $n$.
+\item $A$ is \textbf{\emph{infinite}} if $A$ is not finite.
+\item $A$ is \textbf{\emph{countable}} if $A\sim J$(or \textbf{\emph{enumerable}} or \textbf{\emph{denumerable}}).
+\item $A$ is \textbf{\emph{uncountable}} if $A$ is neither finite nor countable.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[pma 2.7]
+For $f:J(:=\mathbb{N})\to A(:=\{x_1,x_2,\dots,\})$ given by $f(n)=x_n$,
+\begin{enumerate}[label={(\arabic*)}]
+\item $f$: \textbf{\emph{sequence}}, denoted by $\{x_n\}$ or $x_1,x_2,\dots$. Also $\{x_n\}$ is called a sequence in $A$.
+\item $x_n$: A \textbf{\emph{term}} of the sequence.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}[pma 2.7]
+Every countable set is the range of a sequence of distinct terms.
+\end{remark}
+
+% The properties of inverse image.
+
+\begin{theorem}[pma 2.8]
+Every infinite subset of a countable set is countable.
+\end{theorem}
+\begin{proof}
+Let $E\subset A$. Arrange $A$ in a sequence $\{x_n\}$. Define $n_k$ as follows:
+\begin{enumerate}[label={(\arabic*)}]
+\item $n_1$ is the smallest positive integer where $x_{n_1}\in E$.
+\item $n_{k+1}$ is the smallest integer where $x_{n_{k+1}}\in E$ greater than $x_{n_1}, x_{n_2}, \dots, x_{n_k}$.
+\end{enumerate}
+Then $\{x_{n_k}\}$ is an one-to-one correspondence between $E$ and $J$.
+\end{proof}
+
+\begin{remark}[pma 2.9]
+Let $A$ and $\Omega$ be sets, suppose that for each $\alpha \in A$, there is a corresponding subset of $\Omega$ which is denoted by $E_\alpha$. Then $\{E_\alpha\}$ means a set of sets.
+\end{remark}
+
+\begin{theorem}[pma 2.12]
+The countable union of countable sets is countable.
+\end{theorem}
+
+\begin{theorem}[pma 2.13]
+Let $A$ be a countable set, and let $B_n$ be the set of $n$-tuples where each term is in $A$. Then $B_n$ is countable.
+\end{theorem}
+
+\begin{corollary}[pma 2.13]
+The set of all rational numbers is countable.
+\end{corollary}
+
+\begin{theorem}[pma 2.14]
+Let $A$ be a set of all sequence whose elements are the digits 0 and 1. This set $A$ is uncountable.
+\end{theorem}
+\begin{proof}
+By diagonal construction, we can see that every countable subset of $A$ is a proper subset of $A$, i.e., $A$ is uncountable.
+\end{proof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Metric spaces ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Metric spaces}
+
+\begin{definition}[pma 2.15]
+Let $X$ be a set and let $d$ be a function with the following properties for any $p,q\in X$:
+\begin{enumerate}[label={(\arabic*)}]
+\item $d(p,q) \geq 0$, and the inequality is equality \textbf{\emph{if and only if}} $p=q$.
+\item $d(p,q)=d(q,p)$.
+\item $d(p,q)\leq d(p,r)+d(r,q)$ for any $r\in X$.
+\end{enumerate}
+Then $d$ is called a \textbf{\textcolor{orange}{distance}}  or \textbf{\textcolor{orange}{metric}}, and $X$ is called a \textbf{\textcolor{orange}{metric space}}.
+\end{definition}
+
+\begin{definition}[pma 2.17]
+For $a,b\in \mathbb{R}$,
+\begin{enumerate}[label={(\arabic*)}]
+\item $(a,b)$: \textbf{\emph{segment}}
+\item $[a,b]$: \textbf{\emph{interval}}
+\item If $a_i<b_i$ for $i=1,\dots,k$, the set of all points $x=(x_1,\dots,x_k)$ in $\mathbb{R}^k$ where $a_i\leq x_i\leq b_i$ for ($1<i<k$) is called \textbf{\emph{k-cell}}.
+\item An \textbf{\emph{open(or closed) ball}} with center $x\in \mathbb{R}^n$ and radius $r>0$ is the set of all $y\in \mathbb{R}^n$ such that $|y-x|<r$(or $|y-x|\leq r$).
+\item A set $E\subset \mathbb{R}^n$ is \textbf{\emph{convex}} if $\lambda x+(1-\lambda)y\in E$ whenever $x,y\in E$ and $0<\lambda<1$.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}[pma 2.17]
+For $y,z$ in a ball, $|\lambda y + (1-\lambda)z - x| = |\lambda (y-x) +(1-\lambda)(z-x)| \leq \lambda|y-x|+(1-\lambda)|z-x| < \lambda r + (1-\lambda)r = r$. In other words, a ball is convex. Likewise, $k$-cells are convex.
+\end{remark}
+
+\begin{definition}[pma 2.18]
+Let $X$ be a metric space.
+\begin{enumerate}[label={(\arabic*)}]
+\item A \textbf{\emph{neighborhood}} of $p$ is a set $N_r(p)$ consisting of all $q$ such that $d(p,q)<r$ for some $r>0$.
+\item A point $p$ is a \textbf{\emph{limit point}} of $E$ if $N_r(p)\cap E\backslash\{p\}\neq \emptyset$ for every $r>0$. The set of all limit points of $E$ is denoted by $E'$.
+\item A point $p$ is a \textbf{\emph{isolate point}} if $p\in E$, $p\notin E'$.
+\item A point $p$ is a \textbf{\emph{interior point}} of $E$ if $N_r(p)\subset E$ for some $r$.
+\item A \textbf{\emph{closer}} of $E$ is $E\cup E'$ and is denoted by $\overline{E}$.
+\item $E$ is \textbf{\emph{closed}} if $E'\subset E$.
+\item $E$ is \textbf{\emph{open}} if every point of $E$ is an interior point.
+\item $E$ is \textbf{\emph{perfect}} if $E$ is closed and has no isolate points.
+\item $E$ is \textbf{\emph{bounded}} if there is a real number $M$ and $q\in X$ such that $d(p,q)<M$ for all $p\in E$.
+\item $E$ is \textbf{\emph{dense}} if $X=E\cup E'$.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[pma 2.19]
+Every neighborhood is an open set.
+\end{theorem}
+
+\begin{theorem}[The neighborhood of limit points (pma 2.20)]
+\label{thm:ball_of_limit_pt}
+The neighborhood of a limit point of a set $E$ contains infinite many point of $E$.
+\end{theorem}
+
+\begin{corollary}[pma 2.20]
+Every finite set has no limit points.
+\end{corollary}
+
+\begin{theorem}[pma 2.23]
+A set $E$ is open \textbf{\emph{if and only if}} its complement is closed.
+\end{theorem}
+\begin{proof}
+Consider that every point of $E$ is not a limit point of $E^c$ and every point of $E^c$ is not an interior point of $E$.
+\end{proof}
+
+\begin{theorem}[pma 2.24]
+Every finite intersection and arbitrary union of open set is open. And every finite union and arbitrary intersection of closed set is closed.
+\end{theorem}
+
+\begin{theorem}[pma 2.27]
+For $E\subset X$,
+\begin{enumerate}[label={(\arabic*)}]
+\item $\overline{E}$ is closed.
+\item $E=\overline{E}$ \textbf{\emph{if and only if}} $E$ is closed.
+\item $\overline{E}\subset F$ for every closed set $F\subset X$ such that $E\subset F$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\step{a} If $x\in (\overline{E})^c$, then there exists some $r>0$ such that $D(x,r)\cap E=\emptyset$. Consequently, $D(x,r)\cap E'=\emptyset$; otherwise, the neighborhood of any $z\in D(x,r)\cap E'$ contains some points of $E$, leading to a contradiction. Therefore, $D(x,r)\subset (\overline{E})^c$.
+\step{c} $E\subset F$ \& $E'\subset F'\subset F$.
+\end{proof}
+
+\begin{theorem}[pma 2.28] \label{thm:sup_closed_set}
+Let $E$ be a nonempty set of real numbers which is bounded above. Then $\sup E$ is in $\overline{E}$, i.e., $\sup E\in E$ if $E$ is closed.
+\end{theorem}
+
+\begin{definition}[pma 2.29]
+Let $E\subset Y\subset X$ where $X$ is a metric space. Then $E$ is \textbf{\emph{open relative to}} $Y$ if for every $p\in E$, there exists some $r>0$ such that $q\in E$ whenever $d(p,q)<r$ and $q\in Y$.
+\end{definition}
+
+\begin{theorem}[pma 2.30]
+$E$ is open relative to $Y$ \textbf{\emph{if and only if}} $E=Y\cap G$ for some open subset $G$ of $X$.
+\end{theorem}
+\begin{proof}
+\forward $G = \bigcup_{p\in E}D(p,r_p)$.
+\backward trivial.
+\end{proof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Compactness ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Compactness}
+
+\begin{definition}[pma 2.31, 2.32]
+Let $X$ be a metric space and $K\subset X$. By an \textbf{\textcolor{orange}{open cover}} of $K$ we mean a collection $\{G_\alpha\}$ of open subsets of $X$ such that $K\subset \bigcup\limits_\alpha G_\alpha$. $K$ is \textbf{\textcolor{orange}{compact}} if every open cover of $K$ contains a finite subcover.
+\end{definition}
+
+\begin{theorem}[pma 2.33]
+Suppose $K\subset Y\subset X$. $K$ is compact relative to $X$ \textbf{\emph{if and only if}} $K$ is compact relative to $Y$.
+\end{theorem}
+\begin{proof}
+\forward Let $\{U_\alpha\}$ be a collection of sets that are open relative to and covers $E$. Since each $U_\alpha$ is open relative to $Y$, there exists an open set $G_\alpha \subset X$ such that $U_\alpha=G_\alpha \cap Y$. Consequently, there exists a collection $\{G_{\alpha_n}\}$ that covers $E$. Given that $E\subset \bigcup_n G_{\alpha_n}$ and $E\subset Y$, it follows that $E\subset \bigcup_n (G_{\alpha_n}\cap Y)=\bigcup_n U_{\alpha_n}$.
+\backward Let $\{U_\alpha\}$ be a collection of open sets in $X$ that cover $E$. Since each intersection $U_\alpha \cap Y$ is open in $Y$, the collection $\{U_\alpha \cap Y\}$ forms an open cover of $E$ in $Y$.Consequently, there exists a subcollection $\{U_{\alpha_n}\}$ also covers $E$ in $X$.
+\end{proof}
+
+\begin{theorem}[pma 2.34]
+Compact subsets of metric spaces are closed.
+\end{theorem}
+\begin{proof}
+Let $K$ be a compact set in a metric space $X$. Given $q\in K^c$, difine $r_p = \frac{1}{2}d(p,q)$ for each $p\in K$. Then, $\{D(p,r_p)\}$ forms an open cover of $K$. Consequently, there exists a finite subcover $\{D(p_n,r_{p_n})\}$. Clearly. $\bigcap D(q,r_{p_n}) \subset K^c$. Thus, $q$ is an interior point of $K^c$, i.e., $K^c$ is open.
+\end{proof}
+
+\begin{theorem}[pma 2.35] \label{thm:closed_subset_implies_compact}
+Closed subsets of compact sets are compact.
+\end{theorem}
+\begin{proof}
+Let $X$ be a metric space, let $K\subset X$ be a compact set and let $F\subset K$ be a closed set. Suppose $\{U_k\}$ is an open cover of $F$. Then, $\{U_k\} \cup F^c$ forms an open cover of $K$. This cover admits a finite subcover of $K$, clearly containing $F$.
+\end{proof}
+
+\begin{theorem}[pma 2.36] \label{thm:fip_implies_nonempty}
+If $\{K_\alpha\}$ is a collection of compact subsets of a metric space $X$ such that the intersection of every finite subcollection of $\{K_\alpha\}$ is nonempty, i.e., if they satisfy the Finite Intersection Property (FIP), then $\bigcap K_\alpha$ is nonempty.
+\end{theorem}
+\begin{proof}
+Suppose, for contradiction, that $\bigcup K_\alpha$ is empty. Then $\exists \beta$ s.t. $K_\beta \not\subset \bigcup_{\alpha\neq \beta}K_\alpha$. Consequently, $K_\beta \subset \bigcup_{\alpha\neq\beta}K_\alpha^c$, which forms a finite subcover of $K_\beta$. Therefore, the intersection of its complement and $K_\beta$ is empty, leading to a contradiction.
+\end{proof}
+
+\begin{corollary}[pma 2.36]
+If $\{K_n\}$ is a sequence of nonempty compact sets such that $K_n\supset K_{n+1}$, then $\cap_1^\infty K_n$ is not empty.
+\end{corollary}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Bolzano-Weierstrass theorem ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Bolzano-Weierstrass theorem}
+\begin{theorem}[Bolzano-Weierstrass theorem in the context of compact sets (pma 2.37)]
+\label{thm:bolzano_weierstrass_thm_in_compact_set}
+If $E$ is an infinite subset of a compact set $K$, then $E$ has a limit point in $K$.
+\end{theorem}
+\begin{proof}
+Suppose, for contradiction, that there are no limit points of $E$. This implies that for each $x\in E$, there exists a real number $r_x>0$ s.t. $D(x,r_x)\cap (E\backslash \{x\}) = \emptyset$, i.e., $D(x,r_x)$ contains only the point $x$. Consequently, the open cover $\{D(x,r_x)\}$ does not form a finite subcover of $E$.
+\end{proof}
+
+% 240801 #3 : idiot
+\begin{theorem}[pma 2.38]
+If $\{I_n\}$ is a sequence of intervals in $\mathbb{R}^1$, such that $I_n\supset I_{n+1}$ ($n=1,2,\dots$), then $\cap_1^\infty I_n$ is not empty.
+\end{theorem}
+\begin{hardproof}
+Let $X=\sup\{x_k\}$. We will show that $x\in I_m$ for all $m\geq1$. For positive integers $n,m$, we have $a_n\leq a_{n+m}\leq b_{n+m}\leq b_m$. Thus, $x\leq b_m$ for each $m$, and clearly $a_m\leq x$.
+\end{hardproof}
+
+% 240801 #4
+\begin{theorem}[pma 2.39]
+Let $k$ be a positive integer. If $\{I_n\}$ is a sequence of $k$-cell such that $I_n\supset I_{n+1}$ ($n=1,2,\dots$), then $\bigcap_1^\infty I_n$ is not empty.
+\end{theorem}
+
+% 240801 #5 : hard.
+\begin{theorem}[pma 2.40]
+Every $k$-cell is compact.
+\end{theorem}
+\begin{hardproof}
+Suppose, for contradiction, that there are no open covers which form a finite subcover containing $I$. Let $\{G_\alpha\}$ be an arbitrary open cover of $I$. Without loss of generality, we may assume $k=1$ and $I=[a,b]$. Let $c=\frac{a+b}{2}$. Then at least one of the intervals $[a,c]$ or $[c,b]$ is not compact. Denote this interval as $I_1$. For $n>1$, define $I_n$ in the same manner. According to the previous theorem, there exists an $x^*\in I_n\subset I\subset \bigcup G_\alpha$ for all $n=1,2,\dots$. Clearly, $x^*\in G_\alpha$ for some $\alpha$. Since $G_\alpha$ is open, there exists $r>0$ such that $D(x^*,r)\subset G_\alpha$. If $n$ is large enough, by the Archimedian property, $I_n\subset D(x^*,r)\subset G_\alpha$, leading to a contradiction.
+\end{hardproof}
+
+% 240801 #6 : hard
+\begin{theorem}[\textbf{\textcolor{orange}{Heine–Borel theorem}} (pma 2.41)]
+If a set $E$ in $\mathbb{R}^k$ has one of the following three properties, then it has the other two:
+\begin{enumerate}[label={(\alph*)}]
+\item $E$ is closed and bounded.
+\item $E$ is compact.
+\item Every infinite subset of $E$ has a limit point in $E$.
+\end{enumerate}
+\end{theorem}
+\begin{hardproof}
+\step{a}{b} $E$ is in a $k$-cell.
+\step{b}{c} By previous theorem.
+\step{c}{a} Suppose, for contradiction, that $E$ is neither bounded nor closed. In the first case, if $E$ is not bounded, there exist points $x_n\in E$ such that $|x_n|>n$ for each $n=1,2,\dots$. Clearly there are no limit points in the collection $\{x_n\}$. In the second case, assume there exists a limit point $x\in E^c$. Choose $x_n\in E$ so that $d(x,x_n)<\frac{1}{n}$ for $n=1,2,\dots$. Now suppose there is a limit point $y$ of $\{x_n\}$ such that $y\neq x$. Then for large enough $n$, $d(y,x_n) \geq d(y,x) - d(x,x_n) \geq \frac{1}{2}d(y,x)$, leading to a contradiction.
+\end{hardproof}
+
+% 240801 #7
+\begin{theorem}[\textbf{\textcolor{orange}{Bolzano-Weierstrass theorem}} (pma 2.42)]
+\label{thm:bolzano_weierstrass_thm_in_euclidean_set}
+Every bounded infinite subset of $\mathbb{R}^k$ has a limit point in $\mathbb{R}^k$.
+\end{theorem}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Perfect sets ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Perfect sets}
+
+% 240801 #8 : hard
+\begin{theorem}[pma 2.43]
+Let $P$ be a nonempty perfect set in $\mathbb{R}^k$. Then $P$ is uncountable.
+\end{theorem}
+\begin{hardproof}
+Construct $\{K_n\}$ as follows: Let $U_1$ be any neighborhood of $x_1$. Suppose that $U_n$ has been constructed, so that $U_n\cap P$ is not empty. Then, choose a neighborhood $U_{n+1}$ of $x_{n+1}$ such that $\overline{U_n}\subset U_{n+1}$, $x_n\notin \overline{U_{n+1}}$, and $U_{n+1}\cap P$ is not empty. If $K_n=\overline{U_n}\cap P$, then no points of $P$ lie in $\bigcap_1^\infty K_n$. This contradicts the previous theorem.
+\end{hardproof}
+
+\begin{definition}[pma 2.44]
+Let $E_0$ be the interval $[0,1]$. Suppose that $E_n$ has been constructed. Define $E_{n+1}$ by removing the segments $(\frac{3k+1}{3^n}, \frac{3k+2}{3^n})$ for each nonnegative integer $k$ from $E_n$. Then $P=\bigcap\limits_{n=1}^\infty E_n$ is called the \textbf{\emph{Cantor set}}.
+\end{definition}
+
+% 20240801 #9 : hard
+\begin{theorem}[pma 2.44]
+The Cantor set has no segment
+\end{theorem}
+\begin{hardproof}
+Suppose there exists a segment $(a,b)$ within the Cantor set $P$. Given the method of the construction of $P$, it is established that the segment $(\frac{3k+1}{3^m},\frac{3k+2}{3^m})$ does not intersect with $P$. Therefore, if $m$ large enough such that $3^{-m} < \frac{b-a}{4}$, there exists integer $k$ such that the interval $(a,b)$ includes the interval $(\frac{3k+1}{3^m},\frac{3k+2}{3^m})$.
+\end{hardproof}
+
+% 20240801 #10 : trivial but I'm idiot.
+\begin{theorem}[pma 2.44]
+The Cantor set is perfect.
+\end{theorem}
+\begin{proof}
+To show that for each $x\in P$ and each $r>0$, there exists $y\in P$ such that $y\in D(x,r)$: Given $x\in P$ and $r>0$, let $I_{n_k}$ is the interval in $E_n$ that contains $x$. If $n$ is large enough, $I_n \subset D(x,r)$, and it is evident that $y=\sup I_k \in P$. Therefore, $x$ is a limit point of $P$.
+\end{proof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Connected sets ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Connected sets}
+
+\begin{definition}[pma 2.45]
+Two sets $A,B\subset X$ are said to be \textbf{\emph{separated}} if both $A\cap \overline{B}$ and $\overline{A}\cap B$ are empty. A set $E\subset X$ is called \textbf{\emph{connected}} if $E$ is not a union of two nonempty separated sets.
+\end{definition}
+
+\begin{remark}[pma 2.46]
+Disjoint sets $\subset$ separated sets.
+\end{remark}
+
+% 20240801 #11 : rack of rigor
+\begin{theorem}[pma 2.47]
+A set $E\in \mathbb{R}$ is connnected \textbf{\emph{if and only if}} it has the following property: If $x\in E$, $y\in E$, and $x<z<y$, then $z\in E$.
+\end{theorem}
+\begin{hardproof}
+\forward Sup, for contradiction, that $\exists z\notin E$ s.t. $x<z<y$. Define $A=(-\infty,z)$ and $B=(z,\infty)$. Then $A\cap E$ and $B\cap E$ separate $E$, leading to a contradiction.
+\backward Suppose $E=A\cup B$ for some separated set $A,B$ in $\mathbb{R}$. Let $x\in A$, $y\in B$ and without loss of generality, assume $x<y$. Let $z=\sup(A\cap [x,y])$. If $z\notin A$, then $z\notin E$, otherwise $z\in B$, i.e., $\overline{A}\cap B \neq \emptyset$. On the other hand, if $z\in A$, by the definition of a limit point, for every $r>0$, $[z,z+r]\cap B=\emptyset$(otherwise $z$ is also a limit point of $B$, leading to a contradiction), indicating that there exists $z'\in [z,z+r]$ such that $z'\notin A\cup B$. Thus, in both cases, there exists a point within $[x,y]$ that does not belong to $E$.
+\end{hardproof}
+
+\clearpage

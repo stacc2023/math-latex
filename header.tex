@@ -1,0 +1,275 @@
+\usepackage[landscape, margin=0.5cm]{geometry}
+\usepackage{multicol}
+
+\usepackage{helvet} % Use Helvetica font (similar to Arial)
+\renewcommand{\familydefault}{\sfdefault} % 기본 글꼴을 sans-serif로 설정
+
+\usepackage{amsmath, amsthm}
+
+% Define a new theorem style
+\newtheoremstyle{definition}
+{1em} % Space above
+{0.5em} % Space below
+{\normalfont} % Body font
+{} % Indent amount
+{\bfseries} % Theorem head font
+{} % Punctuation after theorem head
+{0cm} % Space after theorem head
+{\llap{\thmname{#1} \thmnumber{#2}\hskip1em}\thmnote{#3\vspace{0.5em}\newline}}
+
+% Apply the new style to the definition environment
+% \theoremstyle{definition}
+\theoremstyle{definition}
+
+
+% Define a custom definition environment
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{example}[definition]{Example}
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem*{remark}{Remark}
+\newtheorem*{corollary}{Corollary}
+
+% Customize the section style
+\usepackage{titlesec}
+% \titleformat{\section}[block]
+% {\normalfont\large\bfseries}
+% {\llap{Section \thesection.0\hskip1em}}{0pt}{}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\titleformat{\subsection}[block]
+{\normalfont\normalsize\bfseries}
+{\llap{Concept \thesubsection\hskip1em}}{0pt}{\large}
+
+
+
+% enumerate
+\usepackage{enumitem}
+% \alph*: 소문자 알파벳 (a, b, c, ...)
+% \Alph*: 대문자 알파벳 (A, B, C, ...)
+% \roman*: 소문자 로마 숫자 (i, ii, iii, ...)
+% \Roman*: 대문자 로마 숫자 (I, II, III, ...)
+
+% math font
+\usepackage{amsfonts}
+
+
+% Redefine the proof environment to match the theorem style
+\makeatletter
+\renewenvironment{proof}[1][(pf)]{%
+    \par
+    \pushQED{\qed}%
+    \normalfont\topsep3pt\relax
+    % \normalfont \topsep6\p@\@plus6\p@\relax
+    \trivlist
+    \item[\llap{\bfseries#1\hskip0em}]
+    \leftskip=2.5em
+    \def\forward{\item[\llap{\bfseries($\Rightarrow$)\hskip0em}]}
+    \def\backward{\item[\llap{\bfseries($\Leftarrow$)\hskip0em}]}
+    \newcommand{\step}[1]{\@ifnextchar\bgroup{\step@binary{##1}}{\step@single{##1}}}
+    \newcommand{\step@binary}[2]{\item[\llap{(##1) $\Rightarrow$ (##2)\hskip0em}]}
+    \newcommand{\step@single}[1]{\item[\llap{(##1)\hskip0em}]}
+}{%
+    \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+\usepackage{xcolor} % color
+\definecolor{softred}{RGB}{239, 41, 41} % softred
+
+
+\makeatletter
+\newenvironment{hardproof}[1][\textcolor{softred}{(pf)}]{%
+    \par
+    \pushQED{\qed}%
+    \normalfont\topsep3pt\relax
+    % \normalfont \topsep6\p@\@plus6\p@\relax
+    \trivlist
+    \item[\llap{\bfseries#1\hskip0em}]
+    \leftskip=2.5em
+    \def\forward{\item[\llap{\bfseries($\Rightarrow$)\hskip0em}]}
+    \def\backward{\item[\llap{\bfseries($\Leftarrow$)\hskip0em}]}
+    \newcommand{\step}[1]{\@ifnextchar\bgroup{\step@binary{##1}}{\step@single{##1}}}
+    \newcommand{\step@binary}[2]{\item[\llap{(##1) $\Rightarrow$ (##2)\hskip0em}]}
+    \newcommand{\step@single}[1]{\item[\llap{(##1)\hskip0em}]}
+}{%
+    \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+
+% hyperlink
+\usepackage{hyperref}
+
+\newcommand{\diam}{\text{diam }}
+
+
+% because
+\usepackage{amssymb}
+
+
+% box
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{notebox}[1][]{
+    colback=white!0,
+    colframe=black,
+    sharp corners,
+    boxrule=1pt,
+    valign=top,
+    left=5pt,
+    #1
+}
+
+%integral
+\usepackage{amsmath}
+
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+
+%Riemann integral
+\usepackage{mathrsfs}
+
+% footnote horizontal
+\usepackage[para]{footmisc}
+
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+
+\definecolor{mintgreen}{HTML}{E0F8E0}
+\definecolor{skyblue}{HTML}{D6EBFF}
+\definecolor{peach}{HTML}{FFE5B4}
+
+
+\newtcolorbox[use counter=definition, number within=section]{mydefinition}[1][]{
+  colback=peach,        % 배경색
+  colframe=peach,       % 경계선 색상 (배경색과 동일하게 설정하여 경계선을 없앰)
+  fonttitle=\bfseries,         % 제목의 글씨체를 볼드체로
+  title={\thetcbcounter \, Definition%
+         \ifstrempty{#1}{}{:\ #1}}, % 제목 서식 설정, 인수 #1이 비어 있지 않으면 ": #1" 추가
+  boxrule=0pt,                 % 경계선 두께 설정 (0pt로 설정하여 경계선 없음)
+  sharp corners,               % 모서리를 뾰족하게
+  coltitle=black,              % 제목 색상
+  colbacktitle=peach,      % 제목 배경색 (본문 배경색과 동일)
+  enhanced,                    % 박스의 기타 그래픽적 요소들 향상
+  toptitle=5pt,
+  left=5pt,
+  right=5pt,
+  bottom=5pt,
+}
+
+
+\newtcolorbox[use counter=definition, number within=section]{mytheorem}[1][]{
+  colback=skyblue,
+  colframe=skyblue,
+  fonttitle=\bfseries,
+  title={\thetcbcounter \, Theorem%
+  \ifstrempty{#1}{}{:\ #1}},
+  boxrule=0pt,
+  sharp corners,
+  coltitle=black,
+  colbacktitle=skyblue,
+  enhanced,                    % 박스의 기타 그래픽적 요소들 향상
+  toptitle=5pt,
+  left=5pt,
+  right=5pt,
+  bottom=5pt,
+}
+
+\newtcolorbox[use counter=definition, number within=section]{mylemma}[1][]{
+    colback=mintgreen,
+    colframe=mintgreen,
+    fonttitle=\bfseries,
+    title={\thetcbcounter \, Lemma%
+    \ifstrempty{#1}{}{:\ #1}},
+    boxrule=0pt,
+    sharp corners,
+    coltitle=black,
+    colbacktitle=mintgreen,
+    enhanced,                    % 박스의 기타 그래픽적 요소들 향상
+    toptitle=5pt,
+    left=5pt,
+    right=5pt,
+    bottom=5pt,
+}
+
+\newtcolorbox[use counter=definition, number within=section]{myproposition}[1][]{
+    colback=mintgreen,
+    colframe=mintgreen,
+    fonttitle=\bfseries,
+    title={\thetcbcounter \, Proposition%
+    \ifstrempty{#1}{}{:\ #1}},
+    boxrule=0pt,
+    sharp corners,
+    coltitle=black,
+    colbacktitle=mintgreen,
+    enhanced,                    % 박스의 기타 그래픽적 요소들 향상
+    toptitle=5pt,
+    left=5pt,
+    right=5pt,
+    bottom=5pt,
+}
+
+\newtcolorbox[use counter=definition, number within=section]{mycorollary}[1][]{
+    colback=mintgreen,
+    colframe=mintgreen,
+    fonttitle=\bfseries,
+    title={\thetcbcounter \, Corollary%
+    \ifstrempty{#1}{}{:\ #1}},
+    boxrule=0pt,
+    sharp corners,
+    coltitle=black,
+    colbacktitle=mintgreen,
+    enhanced,                    % 박스의 기타 그래픽적 요소들 향상
+    toptitle=5pt,
+    left=5pt,
+    right=5pt,
+    bottom=5pt,
+}
+
+\newtheoremstyle{definition}
+{0.5em} % Space above
+{0.5em} % Space below
+{\normalfont} % Body font
+{} % Indent amount
+{\bfseries} % Theorem head font
+{} % Punctuation after theorem head
+{1em} % Space after theorem head
+{}
+
+\titleformat{\section}[block]
+{\normalfont\large\bfseries}
+{Section \thesection. }{0pt}{}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\titleformat{\subsection}[block]
+{\normalfont\normalsize\bfseries}
+{}{0pt}{\large}
+
+\makeatletter
+\renewenvironment{proof}[1][\textbf{\proofname)}]{%
+    \par
+    \pushQED{\qed}%
+    \normalfont\topsep3pt\relax
+    % \normalfont \topsep6\p@\@plus6\p@\relax
+    \trivlist
+    \item #1
+    \def\forward{\item[\llap{\bfseries($\Rightarrow$)\hskip0em}]}
+    \def\backward{\item[\llap{\bfseries($\Leftarrow$)\hskip0em}]}
+    \newcommand{\step}[1]{\@ifnextchar\bgroup{\step@binary{##1}}{\step@single{##1}}}
+    \newcommand{\step@binary}[2]{\item[\llap{(##1) $\Rightarrow$ (##2)\hskip0em}]}
+    \newcommand{\step@single}[1]{\item[\llap{(##1)\hskip0em}]}
+}{%
+    \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+% img
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{capt-of}

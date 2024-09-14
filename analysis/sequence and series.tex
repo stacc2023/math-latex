@@ -1,0 +1,543 @@
+\section{SEQUENCE AND SERIES}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Convergent sequence ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Convergent sequence}
+
+\begin{definition}[The definition of convergence of sequences (pma 3.1)]
+Let $\{p_n\}$ be a sequence in a metric space $X$.
+\begin{enumerate}[label={(\arabic*)}]
+\item $\{p_n\}$ is said to \textbf{\textcolor{orange}{converge}} if there is a point $p\in X$ with the following property:
+$$ \forall \epsilon>0,\; \exists N\in \mathbb{N}\text{ s.t. }n\geq N\Rightarrow d(p_n,p)<\epsilon$$
+In this case, we write $p_n\to p$, or $\lim\limits_{n\to \infty}p_n=p$.
+\item The set of all point $p_n$ is called the \textbf{\textcolor{orange}{range}} of the sequence.
+\item A sequence is \textbf{\textcolor{orange}{bounded}} if its range is bounded.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[The properties of convergent sequences in metric space (pma 3.2)]
+Let $\{p_n\}$ be a sequence in a metric space $X$.
+\begin{enumerate}[label={(\alph*)}]
+\item The $\{p_n\}$ converges to $p\in X$ \textbf{\emph{if and only if}} every neighborhood of $p$ contains $p_n$ for all but finitely many $n$.
+\item If $\{p_n\}$ converges, then its limit is unique.
+\item If $\{p_n\}$ converges, then $\{p_n\}$ is bounded.
+\item If $E\subset X$ and if $p$ is a limit point of $E$, then there is a sequence $\{p_n\}$ in $E$ such that $p=\lim\limits_{n\to\infty}p_n$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\step{b} Given $\epsilon>0$, choose $N>0$ such that $n\geq N$ implies $d(p,p_n)<\frac{\epsilon}{2}$ and $d(p',p_n)<\frac{\epsilon}{2}$. Then $d(p,p')\leq d(p,p_n)+d(p',p_n)<\epsilon$.
+\step{c} Given $\epsilon>0$, there exists $N>0$ such that $n\geq N$ implies $d(p,p_n)<\epsilon$. Thus, the range of $\{p_n\}$ is bounded by $\max\{d(p,p_1),d(p,p_2),\dots,d(p,p_{N-1}),\epsilon\}$.
+\step{d} Choose $p_n$ such that $d(p,p_n)<\frac{1}{n}$. Given $\epsilon>0$, by Archimedian property, there exists a integer $N$ such that $\frac{1}{N}<\epsilon$. If $n\geq N$, then $d(p,p_n)<\epsilon$.
+\end{proof}
+
+% 20240805 #1
+\begin{theorem}[Limit operations for complex sequences (pma 3.3)]
+Suppose $\{s_n\}$, $\{t_n\}$ are complex sequence, and $s_n\to s$, $t_n\to t$ as $n\to \infty$. Then
+\begin{enumerate}[label={(\arabic*)}]
+\item $\displaystyle \lim_{n\to \infty}(s_n+t_n)=s+t$.
+\item $\displaystyle \lim_{n\to \infty}cs_n=cs$, $\lim_{n\to \infty}(c+s_n)=c+s$ for any number $c$.
+\item $\displaystyle \lim_{n\to \infty}(s_nt_n)=st$.
+\item $\displaystyle \lim_{n\to \infty}\frac{1}{s_n}=\frac{1}{s}$, provided $s_n\neq 0$ ($n=1,2,\dots$), and $s\neq 0$.
+\end{enumerate}
+\end{theorem}
+% trivial proof
+
+% 20240805 #2
+\begin{theorem}[The properties of convergent sequences in Euclidean space (pma 3.4)]
+\begin{enumerate}[label={(\alph*)}]
+\item[]
+\item Suppose $x_n\in \mathbb{R}^k$ ($n=1,2,\dots$) and $x_n=(a_{1,n}, \dots, a_{k,n})$. Then $\{x_n\}\to x=(a_1,\dots,a_k)$ \textbf{\emph{if and only if}} $\lim\limits_{n\to \infty}a_{j,n}=a_j$ ($1\leq j\leq k$).
+\item Suppose $\{x_n\}$, $\{y_n\}$ are sequences in $\mathbb{R}^k$, $\{\beta_n\}$ is a sequence of real numbers, and $x_n \to x$, $y_n\to y$, $\beta_n\to \beta$. Then $\lim\limits_{n\to \infty}(x_n+y_n)=x+y$, $\lim\limits_{n\to \infty}x_n\dot y_n=x\dot y$, $\lim\limits_{n\to \infty}\beta_nx_n=\beta x$.
+\end{enumerate} 
+\end{theorem}
+% trivial proof
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Subsequences ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Subsequences}
+
+\begin{definition}[The definition of subsequences (pma 3.5)]
+Given a sequence $\{p_n\}$ , consider a sequence $\{n_k\}$ of positive integer such that $n_1<n_2<\dots$. Then the sequence $\{p_{n_1}\}$ is called a \textbf{\textcolor{orange}{subsequence}} of $\{p_n\}$. If $\{p_{n_i}\}$ converges, its limit is called a \textbf{\textcolor{orange}{subsequential limit}} of $\{p_n\}$.
+\end{definition}
+
+% 20240805 #3
+\begin{theorem}[\textbf{\textcolor{orange}{Bolzano–Weierstrass theorem}} (pma 3.6)]
+\label{thm:bolzano_weierstrass_thm_in_compact_space}
+\begin{enumerate}[label={(\alph*)}]
+\item[]
+\item A sequence in a compact metric space has a subsequences such that converges a point of $X$.
+\item Every bounded sequence in $\mathbb{R}^k$ contains a convergent subsequence.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\step{a} Consider two cases: the range of $\{p_n\}$ is either finite or infinite. The first case is trivial. In the second case, there exists a point $p_{n_k}\in D(p,\frac{1}{k})$ for each $k=1,2,\dots$ (thm \ref{thm:bolzano_weierstrass_thm_in_compact_set}), and it is guaranteed that $n_k\leq n_{k+1}$ (thm \ref{thm:ball_of_limit_pt}).
+\step{b} By (a) and thm \ref{thm:bolzano_weierstrass_thm_in_euclidean_set}
+\end{proof}
+
+% 20240805 #4
+\begin{theorem}
+[The set of subsequential limits is closed (pma 3.7)]
+\label{thm:subseq_limits_closed}
+The subsequential limits of sequence $\{p_n\}$ in a metric space $X$ forms a closed subset of $X$.
+\end{theorem}
+\begin{hardproof}
+Let $E'$ be the set of all subsequential limits of $\{p_n\}$. Suppose $r = d(q,p_{n_1})$, where $q$ is a limit point of $E'$ and $q\neq p_{n_1}$. Then there exist a point $x\in E'$ and a point $p_{n_2}$ such that $d(q,x)<\frac{r}{2^2}$ and $d(x,p_{n_2})<\frac{r}{2^2}$. Consequently, $d(q,p_{n_2})<\frac{r}{2}$. By induction, we can show that $d(q,p_{n_k})<\frac{r}{2^{k-1}}$ for each $k$. Therefore $q\in E'$.
+\end{hardproof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Cauchy sequences ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Cauchy sequences}
+
+\begin{definition}
+[The definition of Cauchy sequences and diameter (pma 3.8, 3.9)]
+Let $X$ be a metric space.
+\begin{enumerate}[label={(\arabic*)}]
+\item A sequence $\{p_n\}$ in $X$ is said to be a \textbf{\textcolor{orange}{Cauchy sequence}} if $$\forall \epsilon>0, \exists N\in \mathbb{Z}\text{ s.t. }n,m\geq N \Rightarrow d(p_n,p_m)<\epsilon$$
+\item Let $E$ be a nonempty subset of $X$, and let $S$ be the set of all real numbers of the form $d(p,q)$, with $p,q\in E$. The $\sup S$ is called the \textbf{\textcolor{orange}{diameter}} of $E$.
+\end{enumerate}
+If $E_N$ consists of the points $P_N, P_{N+1},\dots$, then $\{p_n\}$ is a Cauchy sequence \textbf{\emph{if and only if}} $\lim\limits_{N\to \infty}\diam E_N=0$.
+\end{definition}
+
+% 20240805 #5
+\begin{theorem}
+[Properties of diameter (pma 3.10)]
+Let $X$ be a metric space, let $E\subset X$ be a set, and let $K_n$ be a sequence of compact sets in $X$ such that $K_n\supset K_{n+1}$ for $n=1,2,\dots$.
+\begin{enumerate}[label={(\arabic*)}]
+\item $\diam \overline{E} = \diam E$
+\item If $\lim\limits_{n\to \infty}\diam K_n=0$, then $\bigcap_1^\infty K_n$ consists of exactly one point
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\step{a} Obviously $\diam E < \diam \overline{E}$. On the other hand, for $p,q\in \overline{E}$, there exist $p',q'\in E$ such that $d(p,p')<\epsilon$ and $d(q,q')<\epsilon$. Thus $d(p,q)<2\epsilon + \diam E$.
+\end{proof}
+
+% 20240805 #6
+\begin{theorem}
+[\textbf{\textcolor{orange}{Cauchy criterion}} (pma 3.11)]
+\label{thm:cauchy_criterion}
+\begin{enumerate}[label={(\alph*)}]
+\item[]
+\item In any metric space $X$, every convergent sequence is a Cauchy sequence.
+\item If $X$ is a compact metric space and if $\{p_n\}$ is a Cauchy sequence in $X$, then $\{p_n\}$ converges to some point of $X$.
+\item (Cauchy criterion) In $\mathbb{R}^k$, every Cauchy sequence converges.
+\end{enumerate}
+\end{theorem}
+\begin{hardproof}
+\step{b} There exists a subsequence $p_{n_k}\to p$. Given $\epsilon>0$, choose $N_1$ such that $n_k\geq N_1$ implies $d(p_{n_k},p)<\epsilon$, and choose $N_2$ such that $n, n_k\geq N_2$ implies $d(p_n, p_{n_k})<\epsilon$. If $n,n_k\geq \max (N_1, N_2)$, then $d(p_n,p)<2\epsilon$.
+\step{c} Let $E_N$ be the set consisting of $p_{N+1},p_{N+2},\dots$ such that $\diam E_N<1$. Then the range of $\{p_n\}$ is bounded by the union of $p_1,p_2,\dots$,$p_N$ and $E_N$. Since a bounded set in $\mathbb{R}^k$ is contained in some $k$-cell, assertion (b) implies (c).
+\end{hardproof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Completeness ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Completeness}
+
+\begin{definition}[The definition of completeness (pma 3.12)]
+A metric space in which every Cauchy sequence converges is said to be \textbf{\textcolor{orange}{complete}}.
+\end{definition}
+
+\begin{remark}
+\begin{enumerate}[label={(\arabic*)}]
+\item Every compact metric space is complete.
+\item Every Euclidean space is complete.
+\item Every closed subset of a complete metric space is complete.
+\end{enumerate}
+\end{remark}
+
+\begin{definition}[The definition of monotone sequences (pma 3.13)]
+A sequence $\{s_n\}$ of real numbers is said to be
+\begin{enumerate}[label={(\alph*)}]
+\item \textbf{\textcolor{orange}{monotonically increasing}} if $s_n\leq s_{n+1}$ for $n=1,2,\dots$.
+\item \textbf{\textcolor{orange}{monotonically decreasing}} if $s_n\geq s_{n+1}$ for $n=1,2,\dots$.
+\end{enumerate}
+\end{definition}
+
+% 20240805 #7
+
+\begin{theorem}
+[\textbf{\textcolor{orange}{Monotone Convergence theorem}} (pma 3.14)]
+A monotonic sequence converges \textbf{\emph{if and only if}} it is bounded.
+\end{theorem}
+\begin{proof}
+\forward Suppose $s_n\to s$, then $|s - s_n| < 1$ all but finitely many $n$; hence, $\{s_n\}$ is bounded by $\max \{1+s,s_1+s,\dots,s_n+s\}$.
+\backward Let $s$ be a least upper bound of $\{s_n\}$ and let $\epsilon>0$ be given. Since $s$ is a least upper bound, there exists some $N$ such that $s-\epsilon < s_N \leq s$. Since $\{s_n\}$ increases, $n\geq N$ implies $s-\epsilon<s_n\leq s$.
+\end{proof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- UPPER AND LOWER LIMITS ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Upper and lower limits}
+\begin{definition}
+[Divergence to infinity (pma 3.15)]
+If $\forall M\in \mathbb{R}$, $\exists N\in \mathbb{Z}$ such that $n\geq N$ implies $s_n\geq M$, then we write $s_n\to +\infty$. On the other hand, if $s_n\leq M$, then we wirte $s_n\to -\infty$.
+\end{definition}
+
+\begin{definition}
+[Upper and lower limits (pma 3.16)]
+Let $\{s_n\}$ be a sequence of real numbers, and let $E$ be the set of all subsequential limits, including possibly $+\infty, -\infty$. Then $\sup E$ and $\inf E$ are called the \textbf{\textcolor{orange}{upper}} and \textbf{\textcolor{orange}{lower limits}} of $\{s_n\}$; we write $\limsup\limits_{n\to \infty}s_n=\sup E:=s^*$, $\liminf\limits_{n\to \infty}s_n=\inf E:=s_*$.
+\end{definition}
+
+% 20240806 #1
+\begin{theorem}
+[Properties of upper limits (pma 3.17)]
+In above definition, $s^*$ has the follwing properties:
+\begin{enumerate}[label={(\alph*)}]
+\item $s^*\in E$
+\item If $x>s^*$, there is an integer $N$ such that $n\geq N$ implies $s_n<x$.
+\end{enumerate}
+Moreover, $s^*$ is the only number with these properties.
+\end{theorem}
+\begin{hardproof}
+\step{a} If $s^*=+\infty$, then $E$ is not bounded above; hense $s_n$ is not bounded above(thm \ref{thm:bolzano_weierstrass_thm_in_compact_space}), and there exists $\{s_{n_k}\}$ such that $s_{n_k}\to +\infty$. If $s^*$ is real, then (a) follows from thm \Ref{thm:subseq_limits_closed} and thm \Ref{thm:sup_closed_set}. If $s^*=-\infty$, then there is no subsequential limit. Thus $s_n\to -\infty$.
+\step{b} If there exists infinitely many $n$ such that $s_n\geq x$, then a number $y\in E$ exists such that $y\geq x>s^*$, leading to a contradiction.
+\step{Uniqueness} If $p,q$ satisfy (a) and (b), then we may assume $p<q$. There exists a number $x$ such that $p<x<q$. Since $p$ satisfies (b), $q$ cannnot satisfies (a).
+\end{hardproof}
+
+% 20240806 #2
+\begin{theorem}
+[Condition of convergence (pma 3.16)]
+\label{thm:seq_convergence_iff_limsup_liminf}
+A real-valued sequence converges \textbf{\emph{if and only if}} its upper limit and lower limit are the same.
+\end{theorem}
+
+% 20240806 #3
+\begin{example}
+[pma 3.20]
+Some speical sequences:
+\begin{enumerate}[label={(\alph*)}]
+\item If $p>0$, then $\lim\limits_{n\to \infty}\frac{1}{n^p}=0$.
+\item If $p>0$, then $\lim\limits_{n\to \infty}p^{\frac{1}{n}}=1$.
+\item $\lim\limits_{n\to \infty}n^{\frac{1}{n}}=1$.
+\item If $p>0$ and $a\in \mathbb{R}$, then $\lim\limits_{n\to \infty}\frac{n^a}{(1+p)^n}=0$.
+\item If $|x|<1$, then $\lim\limits_{n\to \infty}x^n=0$.
+\end{enumerate}
+\end{example}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Series ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Series}
+\begin{definition}
+[pma 3.21]
+Let $\{a_k\}$ be a sequence of complex numbers.
+\begin{enumerate}[label={(\arabic*)}]
+\item $\sum\limits_{k=1}^{\infty}a_k(=\sum a_k)$ is called a(n) \textbf{\textcolor{orange}{(infinite) series}}.
+\item $s_n=\sum\limits_{k=1}^{n}a_k$ is called a \textbf{\textcolor{orange}{partial sum}} of the series.
+\item If the series converges, then $s=\sum a_k$ is called the sum of the series.
+\end{enumerate}
+\end{definition}
+
+% 20240806 #4
+\begin{theorem}
+[pma 3.22]
+\label{thm:conv_series}
+By Cauchy criterion(thm \Ref{thm:cauchy_criterion}), the series $\sum a_k$ converges \textbf{\emph{if and only if}} for every $\epsilon>0$, there exists an integer $N$ such that $|s_n-s_m|=|\sum_{k=m+1}^{n}a_k|<\epsilon$ whenever $n\geq m\geq N$.
+\end{theorem}
+
+% 20240806 #5
+\begin{theorem}
+[pma 3.23]
+\label{thm:conv_series_implies_lim_zero}
+If $\sum a_k$ converges, then $\lim_{n\to \infty}a_n = 0$ (taking $m=n$).
+\end{theorem}
+
+% 20240806 #6
+\begin{theorem}
+[pma 3.24]
+\label{thm:conv_nonnegative_series}
+A series of nonnegative(real) terms converges \textbf{\emph{if and only if}} its partial sums form a bounded sequence.
+\end{theorem}
+
+% 20240806 #7
+\begin{theorem}
+[pma 3.25]
+\label{thm:comparison_test}
+(Comparison test) If $|a_n|\leq c_n$ for $n>N$ where $N$ is some fixed integer, and if $\sum c_n$ converges, then $\sum a_n$ converges. On the other hand, if $a_n\geq d_n\geq 0$ for $n>N$, and if $\sum d_n$ diverges, then $\sum a_n$ diverges.
+\end{theorem}
+\begin{proof}
+Given $\epsilon>0$, there exists an integer $N'$ such that $n\geq m\geq N'$ implies $\sum_{k=m+1}^{n}c_k < \epsilon$. Then if $n\geq m\geq max(N,N')$, then $|\sum_{k=m+1}^{n}a_k|\leq \sum_{k=m+1}^{n}|a_k|\leq \sum_{k=m+1}^{n}c_k<\epsilon$. The other assertion is derived using similar logic.
+\end{proof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Series of nonnegative terms ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Series of nonnegative terms}
+
+% 20240806 #8
+\begin{theorem}
+[pma 3.26]
+\textbf{(Geometric Series)} If $0\leq x< 1$, then $\sum x^n=\frac{1}{1-x}$. If $x\geq 1$, the series diverges.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+% 20240806 #9
+\begin{theorem}
+[pma 3.27]
+Suppose $a_1\geq a_2\geq \dots \geq 0$. Then $\sum a_n$ converges \textbf{\emph{if and only if}} $\sum 2^ka_{2^k}$ converges.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+% 20240807 #1 : trivial
+\begin{theorem}
+[pma 3.28]
+$\sum \frac{1}{n^p}$ converges if $p>1$ and diverges if $p\leq 1$.
+\end{theorem}
+
+% 20240807 #2 : trivial
+\begin{theorem}
+[pma 3.29]
+$\sum\limits_{n=2}^{\infty}\frac{1}{n(\log n)^p}$ converges if $p>1$ and diverges if $p\leq 1$.
+\end{theorem}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- The number e ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{The number e}
+\begin{definition}
+[pma 3.30]
+$e=\sum\limits_{n=0}^\infty \frac{1}{n!}$.
+\end{definition}
+
+% 20240807 #3 : non-trivial
+\begin{theorem}
+[pma 3.31]
+$\lim\limits_{n\to \infty}(1+\frac{1}{n})^n=e$.
+\end{theorem}
+\begin{hardproof}
+Let $s_n=\sum_{k=0}^n\frac{1}{k!}$, $t_n=(1+\frac{1}{n})^n$. Then $t_n=1+1+\frac{1}{2!}(1-\frac{1}{n})+\frac{1}{3!}(1-\frac{1}{n})(1-\frac{2}{n})+\dots+\frac{1}{n!}(1-\frac{1}{n})(1-\frac{2}{n})\dots(1-\frac{n-1}{n})$. Hense $t_n\leq s_n$, so that $\limsup_{n\to \infty}t_n\leq e$. Next, if $n\geq m$, $t_n\geq 1+1+\frac{1}{2!}(1-\frac{1}{n})+\dots+\frac{1}{m!}(1-\frac{1}{n})\dots(1-\frac{m-1}{n})$. Let $n\to \infty$, keeping $m$ fixed. We get $\liminf_{n\to \infty}t_n\geq 1+1+\frac{1}{2!}+\dots+\frac{1}{m!}$, so that $s_m\leq \liminf_{n\to \infty} t_n$. Letting $m\to \infty$, we finally get $e\leq \liminf_{n\to \infty}t_n$.
+\end{hardproof}
+
+\begin{remark}
+[pma 3.32]
+$e-s_n=\frac{1}{(n+1)!}+\frac{1}{(n+2)!}+\dots<\frac{1}{(n+1)!}\{1+\frac{1}{n+1}+\frac{1}{(n+1)^2}+\dots\}=\frac{1}{n!n}$.
+\end{remark}
+
+% 20240807 #4
+\begin{theorem}
+[pma 3.32]
+$e$ is irrational.
+\end{theorem}
+\begin{hardproof}
+Suppose $e=p/q$. Then $0<q!(e-s_q)<1/q$. By our assumption, $q!(e-s_q)$ is an integer, leading to a contradiction.
+\end{hardproof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- The root and ratio tests ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{The root and ratio tests}
+
+\begin{mytheorem}
+[Root test]
+\label{thm:root_test}
+Given $\sum a_n$, put $\alpha = \limsup\limits_{n\to \infty}|a_n|^{\frac{1}{n}}$. Then
+\begin{enumerate}[label={(\alph*)}]
+\item if $\alpha < 1$, $\sum a_n$ converges;
+\item if $\alpha > 1$, $\sum a_n$ diverges;
+\item if $\alpha = 1$, the test gives no information.
+\end{enumerate}
+\end{mytheorem}
+\begin{proof}
+[PMA 3.33] (a) If $\alpha < \beta < 1$, the comparison test show the convergence of $\sum a_n$. \\
+(b) If $\alpha > 1$, by the definition of limsup, there exist infinitely many $n$ such that $|a_n|>1$, so that the condition $a_n\to 0$(necessaty for convergence of $\sum a_n$) does not hold.
+\end{proof}
+
+\begin{mytheorem}
+[Raito test]
+\label{thm:ratio_test}
+The series $\sum a_n$
+\begin{enumerate}[label={(\alph*)}]
+\item converges if $\limsup\limits_{n\to \infty}|\frac{a_{n+1}}{a_n}|<1$,
+\item divergess if $|\frac{a_{n+1}}{a_n}|\geq 1$ for all $n\geq n_0$, where $n_0$ is some fixed integer.
+\end{enumerate}
+\end{mytheorem}
+\begin{proof}
+[PMA 3.34]
+(a) Suppose for some $N\in \mathbb{Z}$, $\displaystyle \left|\frac{a_{n+1}}{a_n}\right|<\beta<1$ for $n\geq N$. Then $|a_{N+p}|<\beta|a_{N+p-1}|<\dots<\beta^p|a_N|$. If we set $n=N+p$, then $|a_n|<|a_N|\beta^{n-N}$ for $n\leq N$, and $\sum a_n$ converges by the comparison test.
+\end{proof}
+
+\begin{myproposition}
+For any sequence $\{c_n\}$ of positive numbers,
+$$\liminf_{n\to \infty}\frac{c_{n+1}}{c_n}\leq \liminf_{n\to \infty}\sqrt[n]{c_n},$$
+$$\limsup_{n\to \infty}\sqrt[n]{c_n}\leq \limsup_{n\to \infty}\frac{c_{n+1}}{c_n}$$
+\end{myproposition}
+\begin{proof}
+[pma 3.37]
+\end{proof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Power series ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Power series}
+\begin{definition}
+[pma 3.38]
+Given a sequence $\{c_n\}$ of complex numbers, the series
+$$\sum_{n=0}^{\infty}c_nz^n$$
+is called a \textbf{\textcolor{orange}{power series}}. The numbers $c_n$ are called the \textbf{\textcolor{orange}{coefficient}} of the series; $z$ is a complex number.
+\end{definition}
+
+% 20240809 #2
+\begin{theorem}
+[pma 3.39]
+Put $$\alpha =\limsup_{n\to \infty}\sqrt[n]{|c_n|},\;\;R=\frac{1}{\alpha}$$
+Then $\sum c_nz^n$ converges if $|z|<R$ and diverges if $|z|>R$.
+\end{theorem}
+
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Summation by parts ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Summation by parts}
+
+% 20240809 #3
+\begin{theorem}
+[pma 3.41]
+Given two sequence $\{a_n\}$, $\{b_n\}$, put $A_n=\sum\limits_{k=0}^{n}a_k$ if $n\geq 0$; put $A_{-1}=0$. Then, if $0\leq p\leq q$, we have
+$$\sum_{n=p}^qa_nb_n=\sum_{n=p}^{q-1}A_n(b_n-b_{n+1})+A_qb_q-A_{p-1}b_p$$
+\end{theorem}
+\begin{proof}
+Computation.
+\end{proof}
+
+% 20240809 #4
+\begin{theorem}
+[pma 3.42]
+Suppose
+\begin{enumerate}[label={(\alph*)}]
+\item $A_n$ form a bounded sequence;
+\item $b_0\geq b_1\geq \dots$;
+\item $\lim\limits_{n\to \infty}b_n=0$.
+\end{enumerate}
+Then $\sum a_nb_n$ converges.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+% 20240809 #5
+\begin{corollary}
+[pma 3.43]
+Suppose
+\begin{enumerate}[label={(\alph*)}]
+\item $|c_1|\geq |c_2|\geq \dots$;
+\item $c_{2m-1}\geq 0$, $c_{2m}\leq 0$ for $m=1,2,\dots$;
+\item $\lim\limits_{n\to \infty}c_n=0$.
+\end{enumerate}
+Then $\sum c_n$ converges.    
+\end{corollary}
+
+% 20240809 #6
+\begin{theorem}
+[pma 3.44]
+Suppose
+\begin{enumerate}[label={(\alph*)}]
+\item the radius of convergence of $\sum c_nz^n$ is 1;
+\item $c_0\geq c_1\geq \dots$;
+\item $\lim\limits_{n\to \infty}c_n=0$.
+\end{enumerate}
+Then $\sum c_nz^n$ converges at every point on the circle $|z|=1$, except possibly at $z=1$.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Absolute convergence ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Absolute convergence}
+
+\begin{definition}
+[pma 3.45]
+The series $\sum a_n$ is said to \textbf{\textcolor{orange}{converge absolutely}} if the series $\sum |a_n|$ converges.
+\end{definition}
+
+% 20240809 #7
+\begin{theorem}
+[pma 3.45]
+If $\sum a_n$ converges absolutely, then $\sum a_n$ converges.
+\end{theorem}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Addition and multiplication of series ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Addition and multiplication of series}
+
+% 20240809 #8
+\begin{theorem}
+[pma 3.47]
+If $\sum a_n=A$, and $\sum b_n=B$, then $\sum (a_n+b_n) = A+B$, and $\sum ca_n = cA$, for any fixed $c$.
+\end{theorem}
+
+\begin{definition}
+[pma 3.48]
+Given $\sum a_n$ and $\sum b_n$, we put
+$$ c_n=\sum_{k=0}^{n}a_kb_{n-k}\;\; (n=0,1,\dots)$$
+and call $\sum c_n$ the \textbf{\textcolor{orange}{product}} of two given series, in other word, the \textbf{\textcolor{orange}{Cauchy product}}  (consider the equation $(a_0+a_1z+a_2z^2+\dots)(b_0+b_1z+b_2z^2+\dots)=a_0b_0+(a_0b_1+a_1b_0)z+(a_0b_2+a_1b_1+a_2b_0)z^2+\dots$).
+\end{definition}
+
+\begin{example}
+[pma 3.49]
+A counterexample to the assertion that the Cauchy product of two convergent series converges:
+$$A_n=\sum_{n=0}^\infty \frac{(-1)^n}{\sqrt{n+1}}$$
+Consider the Cauchy product of $A_n$ itself:
+$$c_n=(-1)^n\sum_{k=0}^n\frac{1}{\sqrt{(n-k+1)(k+1)}}$$
+Since
+$$(n-k+1)(k+1)=(\frac{n}{2}+1)^2-(\frac{n}{2}-k)^2\leq (\frac{n}{2}+1)^2$$
+we have
+$$|c_n|\geq \sum_{k=0}^n \frac{2}{n+2}=\frac{2(n+1)}{n+2}$$
+\end{example}
+
+% 20240810 #1
+\begin{theorem}
+[pma 3.50]
+If $\sum a_n$ converges absolutely, $\sum a_n=A$, $\sum b_n=B$, then the Cauchy product $\sum c_n=AB$.
+\end{theorem}
+\begin{hardproof}
+
+\end{hardproof}
+
+% 20240810 #2
+\begin{theorem}
+[pma 3.51]
+If the series $\sum a_n$, $\sum b_n$, $\sum c_n$ converge to $A$, $B$, $C$, then $C=AB$.
+\end{theorem}
+\begin{proof}
+Latter
+\end{proof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- Rearrangements ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{Rearrangements}
+
+\begin{definition}
+[pma 3.52]
+Let $\{k_n\}$ be a 1-1 function from $\mathbb{N}$ to $\mathbb{N}$. Putting $a'_n=a_{k_n}$, we say that $\sum a_n'$ is a \textbf{\textcolor{orange}{rearrangement}} if $\sum a_n$.
+\end{definition}
+
+
+% 20240810 #3
+\begin{theorem}
+[pma 3.54]
+Let $\sum a_n$ be a series of real numbers which converges, but not absolutely. Suppose $-\infty\leq \alpha\leq \beta\leq \infty$. Then there exists a rearrangement $\sum a_n'$ with partial sums $s_n'$ such that $\liminf\limits_{n\to \infty}s_n'=\alpha$, $\limsup\limits_{n\to \infty}=\beta$.
+\end{theorem}
+\begin{hardproof}
+
+\end{hardproof}
+
+% 20240810 #4
+\begin{theorem}
+[pma 3.55]
+If $\sum a_n$ is a series of complex numbers which converges absolutely, then everyy rearrangement of $\sum a_n$ converges,and they all converge to the same sum.
+\end{theorem}
+\begin{hardproof}
+
+\end{hardproof}
+
+\clearpage

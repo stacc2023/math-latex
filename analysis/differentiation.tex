@@ -1,0 +1,165 @@
+\section{DIFFERENTIATION}
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- REARRANGEMENTS ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\begin{notebox}
+2024-08-16: only def and thm : have to pf
+\end{notebox}
+\subsection{REARRANGEMENTS}
+
+\begin{definition}
+Let $f:[a,b]\to \mathbb{R}$. $\displaystyle f'(x)=\lim_{t\to x}\frac{f(t)-f(x)}{t-x}$ for any $x\in [a,b]$. $f'$ is called the \textbf{\textcolor{orange}{derivative}} of $f$, and $f$ is \textbf{\textcolor{orange}{differentiable}} at a point $x$ if $f'$ is defined at $x$.
+\end{definition}
+
+\begin{theorem}
+Differentiability implies continuity.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}
+If $f,g$ differentiable at $x$,
+\begin{enumerate}[label={(\alph*)}]
+\item $(f+g)'(x) = f'(x) + g'(x)$;
+\item $(fg)'(x) = (f'g)(x) + (fg')(x)$;
+\item $\displaystyle \left(\frac{f}{g}\right)'(x) =  \frac{(f'g)(x)-(fg')(x)}{g^2(x)}$ if $g'(x)\neq x$
+\end{enumerate} 
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}
+(Chain rule) Let $f$ be a continuous function on $[a,b]$, $I$ a interval containing $[a,b]$, $g$ a function defined on $I$. Suppose $f'(x)$ exists at some point $x\in [a,b]$, and $g'(f(x))$ exists. If $h(t) = g(f(t))$ for $a\leq t\leq b$, then $h$ is differentiable at $x$, and $h'(x) = g'(f(x))f'(x)$.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- MEAN VALUE THEOREMS ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{MEAN VALUE THEOREM}
+\begin{definition}
+Let $f$ be a real function defined on a metric space $X$. We say $f$ has a \textbf{\textcolor{orange}{local maximum}} at a point $p\in X$ if there exists $\delta>0$ such that $f(q)\leq f(p)$ for all $q\in X$ with $d(p,q)<\delta$.
+\end{definition}
+
+\begin{theorem}
+Let $f$ be defined on $[a,b]$. If $f$ has a local maximum at a point $x\in(a,b)$ and if $f'(x)$ exists, then $f'(x)=0$.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}
+(Cauchy mean value theorem) If $f,g$ be continuous real functions on $[a,b]$ which are differentiable in $(a,b)$, then there is a point $c\in (a,b)$ at which $[f(b)-f(a)]g'(c)=[g(b)-g(a)]f'(c)$.
+\end{theorem}
+\begin{proof}
+Put $h(t)=[f(b)-f(a)]g(t)-[g(b)-g(a)]f(t)$ for $a\leq t\leq b$.
+\end{proof}
+
+\begin{corollary}
+(Mean value theorem) If $g(x)=x$, there exists a point $c\in (a,b)$ at which $f(b)-f(a)=(b-a)f'(c)$.
+\end{corollary}
+
+\begin{theorem}
+Suppose $f$ is differentiable in $(a,b)$.
+\begin{enumerate}[label={(\alph*)}]
+\item If $f'(x)\geq 0$ for all $x\in(a,b)$, then $f$ is monotonically increasing.
+\item If $f'(x)=0$ for all $x\in (a,b)$, then $f$ is constant.
+\item If $f'(x)\leq 0$ for all $x\in (a,b)$, then $f$ is monotonically decreasing.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+For $a< x_1< x_2< b$, there is a point $x\in (x_1,x_2)$ such that $f(x_2)=f(x_1)=(x_2-x_1)f'(x)$.
+\end{proof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- THE CONTINUITY OF DERIVATIVES ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{THE CONTINUITY OF DERIVATIVES}
+
+\begin{theorem}
+(\textbf{\emph{Darboux's theorem}}) Let $I$ be a closed interval, $f:I\to \mathbb{R}$ a differentiable function. Then $f'$ has the intermediate value property.
+\end{theorem}
+\begin{proof}
+
+\end{proof}
+
+\begin{corollary}
+$f'$ cannot have any simple discontinuities on $[a,b]$.
+\end{corollary}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- L'HOSPITAL'S RULE ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{L'HOSPITAL'S RULE}
+
+\begin{theorem}
+Suppose $f,g$ are real and differentiable in $(a,b)$, and $g'(x)\neq 0$ for all $x\in(a,b)$, where $-\infty \leq a<b\leq +\infty$. Suppose $\displaystyle \frac{f'(x)}{g'(x)}\to A$ as $x\to a$. If $f(x)\to 0$ and $g(x)\to 0$ as $x\to a$, or if $g(x)\to +\infty$ as $x\to a$, then $\displaystyle \frac{f(x)}{g(x)}\to A$ as $x\to a$.
+\end{theorem}
+\begin{hardproof}
+
+\end{hardproof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- DERIVATIVES OF HIGHER ORDER ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{DERIVATIVES OF HIGHER ORDER}
+
+\begin{definition}
+
+\end{definition}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- TAYLOR'S THEOREM ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{TAYLOR'S THEOREM}
+
+\begin{theorem}
+(\textbf{\emph{Taylor's theorem}}) Suppose
+\begin{enumerate}[label={(\alph*)}]
+\item $f:[a,b]\to \mathbb{R}$;
+\item $f^{(n-1)}$ continuous on $[a,b]$;
+\item $f^{(n)}$ is differentiable on $(a,b)$;
+\item $\alpha$, $\beta$ are distinct points of $[a,b]$;
+\item $\displaystyle P(t):=\sum_{k=0}^{n-1}\frac{f^{(k)}(\alpha)}{k!}(t-\alpha)$.
+\end{enumerate}
+Then there exists a point $x\in (\alpha, \beta)$ such that $\displaystyle f(\beta)=P(\beta)+\frac{f^{(n)}(x)}{n!}(\beta - \alpha)^n$. The last term in the second part of the equation is called the \textbf{\textcolor{orange}{Lagrange form}} of the remainder.
+\end{theorem}
+\begin{hardproof}
+Let $M$ be the number defined by
+$$f(\beta)=P(\beta)+M(\beta-\alpha)^n$$
+and put
+$$g(t) = f(t)- P(t) -M(t-\alpha)^n\quad (a\leq t\leq b)$$
+We now see
+$$g^{(n)}(t)=f^{(n)}(t)-n!M$$
+Hence it is enough to show that $g^{(n)}(x)=0$ for some $x\in (\alpha, \beta)$.
+Note that
+$$g(\alpha)=g'(\alpha)=\dots=g^{(n-1)}(\alpha)=0$$
+We can repeatedly apply the mean-value theorem to the above equation.
+That is, since $g(\alpha)=g(\beta)=0$, there exists some $x_1$ in $(\alpha, \beta)$ such that $g'(x_1)=0$. Similarly, $g''(x_2)=0$ for some $x_2\in (\alpha, x_1)$, and so on.
+\end{hardproof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- DIFFERENTIATION OF VECTOR-VALUED FUNCTIONS ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{DIFFERENTIATION OF VECTOR-VALUED FUNCTIONS}
+
+\begin{remark}
+Mean-value theorem does not holds for vector-valued function. Consider the function $f(x)=e^{ix}$.
+\end{remark}
+
+\begin{remark}
+L'Hospital's rule does not holds for vector-valued function. Consider the function $f(x)=x$ and $g(x)=x+x^2e^{i/x^2}$.
+\end{remark}
+
+\begin{theorem}
+Suppose $f:[a,b]\to \mathbb{R}^k$ is continuous and $f$ is differentiable in $(a,b)$. Then there exists $x\in(a,b)$ such that $|f(b)-f(a)|\leq (b-a)|f'(x)|$.
+\end{theorem}
+\begin{hardproof}
+
+\end{hardproof}
+
+\clearpage

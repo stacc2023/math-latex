@@ -1,0 +1,35 @@
+\subsection{24. Connected subspace of the real line}
+\begin{mytheorem}
+[Intermediate value theorem]
+Let $f:X\to Y$ be a continuous map, where $X$ is a connected space and $Y$ is an ordered set in the order topology. If $f(a)<r<f(b)$, there exists a point $c\in X$ such that $f(c)=r$.
+\end{mytheorem}
+\begin{proof}
+Munkres p154
+\end{proof}
+
+\subsection{25. Components and local connectedness}
+\begin{mydefinition}
+Given $X$, define an equivalence relation on $X$ by setting $x\sim y$ if there is a connected subspace(or path) $X$ containing both $x$ and $y$. The equivalence classes are called the \textbf{\emph{components(or path components)}} of $X$.
+\end{mydefinition}
+
+\begin{mytheorem}
+The (path) components of $X$ are (path) connnected disjoint subspaces of $X$ whose union is $X$ such that each nonempty (path) connected subspace of $X$ itersects only one of them.
+\end{mytheorem}
+\begin{proof}
+Munkres p159,p160
+\end{proof}
+
+\begin{mydefinition}
+A space $X$ is said to be \textbf{\emph{locally (path) connected at x}} if for every neighborhood $U$ of $x$, there is a (path) connected neighborhood $V$ of $x$ contained in $U$. 
+\end{mydefinition}
+
+\begin{mytheorem}
+A space $x$ is locally (path) connected if and only if for every open set $U$ of $X$, each (path) components of $U$ is open in $X$.
+\end{mytheorem}
+\begin{proof}
+Munkres 161
+\end{proof}
+
+\begin{mytheorem}
+If $X$ is a topological space, each path components of $X$ lies in a component of $X$. If $X$ is locally path connected, then the components and the path components of $X$ are the same.
+\end{mytheorem}

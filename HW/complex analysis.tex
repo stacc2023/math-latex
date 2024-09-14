@@ -1,0 +1,157 @@
+\documentclass{article}
+\input{../header.tex}
+
+\begin{document}
+\begin{multicols}{2}
+
+\section{HW 1}
+
+\begin{exersise}
+[Lemma 1.2]
+Let $z,w\in \mathbb{C}$.
+\begin{enumerate}[label={(\alph*)}]
+\item $\overline{z+w}=\overline{z}+\overline{w}$ and $\overline{z\cdot w}=\overline{z}\cdot \overline{w}$.
+\item $z+\overline{z}=2\text{Re}(z)$ and $z-\overline{z}=i2\text{Im}(z)$.
+\item $|\overline{z}|=|z|$ and $|z\cdot w|=|z||w|$.
+\item $|\text{Re}(z)|\leq |z|$ and $|\text{Im}(z)|\leq |z|$.
+\end{enumerate}
+\end{exersise}
+\begin{proof}
+Let $z=z_1+z_2i$ and $w=w_1+w_2i$.
+\begin{enumerate}[label={(\alph*)}]
+\item $\overline{z+w}=\overline{(z_1+z_2i)+(w_1+w_2i)}=\overline{(z_1+w_1)+(z_2+w_2)i}=(z_1+w_1)-(z_2+w_2)i=(z_1-z_2i)+(w_1-w_2i)=\overline{z}+\overline{w}$.\\
+$\overline{z\cdot w}=\overline{(z_1+z_2i)\cdot(w_1+w_2i)}=\overline{(z_1w_1-z_2w_2)+(z_1w_2+z_2w_1)i}=(z_1w_1-z_2w_2)-(z_1w_2+z_2w_1)i=(z_1-z_2i)\cdot (w_1-w_2i)=\overline{z}\cdot \overline{w}$.
+\item $z+\overline{z}=(z_1+z_2i)+(z_1-z_2i)=2z_1=2\text{Re}(z)$\\
+$z-\overline{z}=(z_1+z_2i)-(z_1-z_2i)=2z_2i=2i\text{Im}(z)$.
+\item $|\overline{z}|=\sqrt{\overline{z}\cdot \overline{\overline{z}}}=\sqrt{\overline{z}\cdot z}=\sqrt{z\cdot \overline{z}}=|z|$.\\
+$|z\cdot w|^2 = z\cdot w\cdot \overline{z}\cdot \overline{w} = z\cdot \overline{z}\cdot w\cdot \overline{w} = |z|^2|w|^2 \implies |z\cdot w|=|z||w|$.
+\item $|\text{Re}(z)|^2=z_1^2 \leq z_1^2+z_2^2 = |z|^2 \implies |\text{Re}(z)|\leq |z|$.\\
+$|\text{Im}(z)|^2=z_2^2 \leq z_1^2+z_2^2 = |z|^2 \implies |\text{Im}(z)|\leq |z|$.
+\end{enumerate}
+\end{proof}
+
+\begin{exersise}
+[Lemma 1.5]
+If $f,g\in C(U)$, then $f+g,fg\in C(U)$.
+\end{exersise}
+\begin{proof}
+\begin{enumerate}[label={(\alph*)}]
+\item[$(f+g)$] Given $\epsilon>0$ and fixed $x_0\in U$, choose open subsets $V_1,V_2\subset U$ such that 
+$$x_0\in V_1 \implies \sup_{x\in V_1}|f(x)-f(x_0)|<\frac{\epsilon}{2}$$ and $$x_0\in V_2 \implies \sup_{x\in V_2}|f(x)-f(x_0)|<\frac{\epsilon}{2}.$$
+Then 
+\begin{align*}
+    x_0\in V=V_1\cap V_2 &\Rightarrow \sup_{x_0\in V}|(f+g)(x)-(f+g)(x_0)|\\
+    &\leq \sup_{x_0\in V}|f(x)-f(x_0)|+\sup_{x_0\in V}|g(x)-g(x_0)|\\
+    & < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+\end{align*}
+\item[$(fg)$] Given $\epsilon>0$ and fixed $x_0\in U$, choose open subsets $V_1,V_2\subset U$ such that
+$$x_0\in V_1 \implies \sup_{x_0\in V_1}|f(x)-f(x_0)|<\frac{\epsilon}{4|g(x_0)|}$$
+and
+$$x_0\in V_2 \implies \sup_{x_0\in V_2}|g(x)-g(x_0)|<\frac{\epsilon}{2|f(x_0)|}$$
+and 
+$$x_0\in V_2 \implies \sup_{x_0\in V_2}|g(x)-g(x_0)|< |g(x_0)|\text{, i.e., }\sup_{x_0\in V_2}|g(x)|<2|g(x_0)|.$$
+Then
+\begin{align*}
+    x_0\in V=V_1\cap V_2 &\Rightarrow \sup_{x_0\in V}|fg(x)-fg(x_0)|\\
+    &=\sup_{x_0\in V}|f(x)g(x)-f(x_0)g(x)+f(x_0)g(x)-f(x_0)g(x_0)|\\
+    &\leq\sup_{x_0\in V}|g(x)(f(x)-f(x_0))|+\sup_{x_0\in V}|f(x_0)(g(x)-g(x_0))|\\
+    &< 2|g(x_0)|\cdot \frac{\epsilon}{4|g(x_0)|} + |f(x_0)|\cdot + \frac{\epsilon}{2|f(x_0)|}\\
+    &=\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
+\end{align*}
+\end{enumerate}
+\end{proof}
+
+\begin{exersise}
+[Lemma 1.7]
+\begin{enumerate}[label={(\alph*)}]
+\item[]
+\item Let $f(z)=1/z$. Then $f\in H(\mathbb{C}-\{0\})$ and $f'(z)=-1/z^2$.
+\item Let $f(z)=\overline{z}$. Then $f$ is nowhere differentiable.
+\end{enumerate}
+\end{exersise}
+\begin{proof}
+\begin{enumerate}[label={(\alph*)}]
+\item Let $z_0\in U\backslash \{0\}$ be given. Since the set $U=\mathbb{C}\backslash \{0\}$ is open, there is a neighborhood $V_0$ of $z_0$ contained in $U\backslash \{0\}$. Let $z_1\in V_0$ be a point. Since $V_0$ is open, there is a neighborhood of $z_1$ does not contain $0$. Therefore, we can apply definition 1.7 for every $z_1\in V_0$:
+$$\lim_{z\to z_1}\frac{f(z)-f(z_1)}{z-z_1}=\lim_{z\to z_1}\frac{\frac{1}{z}-\frac{1}{z_1}}{z-z_1}=\lim_{z\to z_1}\frac{-1}{zz_1}$$
+Now we claim that
+$$\lim_{z\to z_1}\frac{-1}{zz_1}=\frac{-1}{z_1^2}.$$
+Let $\epsilon>0$ be given, and assume $\delta \leq \frac{1}{2}|z_1|$. Then we have
+$$\frac{1}{2}|z_1|<|z|<\frac{3}{2}|z_1|.$$
+We observe that
+$$\left|\frac{-1}{zz_1}-\frac{-1}{z_1^2}\right|=\left|\frac{-z_1+z}{zz_1^2}\right|<\frac{\delta}{\frac{1}{2}|z_1|z_1^2}$$
+But we want
+$$\frac{\delta}{\frac{1}{2}|z_1|z_1^2} \leq \epsilon.$$
+Consequently, it is sufficient to set $\displaystyle \delta=\min\left\{\frac{1}{2}|z_1|, \frac{1}{2}\epsilon|z_1|^3\right\}$.
+\item Let $z_0\in \mathbb{C}$ be given, and suppose $z_0=x_0+y_0i$ and $z=x+yi$ for $z\neq z_0$. Then 
+$$\lim_{z\to z_0} \frac{\overline{z}-\overline{z_0}}{z-z_0}
+=\lim_{z\to z_0} \frac{(x-x_0)+(-y+y_0)i}{(x-x_0)+(y-y_0)i}
+$$
+If we fix $x=x_0$, then the value of limit is $-1$, or if we fix $y=y_0$, then the value of limit is $1$, which implies that the limit does not converge.
+\end{enumerate}
+\end{proof}
+
+\begin{exersise}
+[Corollary 1.9]
+If $f$ is differentiable at $c$, then $f$ is continuous at $c$.
+\end{exersise}
+\begin{proof}
+By the theorem 1.8, $f$ can be expressed as a sum or product of continuous functions at $c$.
+By the lemma 1.5, it must also be continuous at $c$.
+\end{proof}
+
+\begin{exersise}
+[Lemma 1.10]
+If $f,g\in H(U)$, then $f+g,fg\in H(U)$ and $(f+g)'=f'+g'$ and $(fg)'=f'g+fg'$. 
+\end{exersise}
+\begin{proof}
+Let $z_0\in U$ be given. There exists $r_f,r_g>0$ such that $f,g$ are differentiable on $D(z_0,r_f),D(z_0,r_g)$ respectively. Set $r=\min(r_f,r_s)$. We claim that $f+g$ and $fg$ is differentiable on $D(z_0,r)$. To prove this, let $z_1\in D(z_0,r)$ be given. 
+For some $a_f,a_g\in \mathbb{C}$ and some $h_f,h_g:U\to \mathbb{C}$ which are continuous at $z_1$ and which are zero at $z_1$,
+$$f(z) = f(z_1)+a_f(z-z_1)+h_f(z)(z-z_1)$$
+$$g(z) = g(z_1)+a_g(z-z_1)+h_g(z)(z-z_1)$$
+$a_f,a_g$ denote the derivative of $f$ and $g$ at $x_0$, respectively.
+Then
+$$(f+g)(z)= (f+g)(z_1)+(a_f+a_g)(z-z_1)+(h_f+h_z)(z)(z-z_1).$$
+If we set $a_{f+g}=a_f+a_g$ and $h_{f+g}=h_f+h_z$, then it satisfies the conditions for differentiability($\because h_{f+g}(z) = 0$ at $z_1$ and continuous at $z_1$ by the lemma 1.5). On the other hand,
+\begin{align*}
+    (fg)(z) =& (f(z_1)+a_f(z-z_1)+h_f(z)(z-z_1))(g(z_1)+a_g(z-z_1)+h_g(z)(z-z_1))\\
+    =& fg(z_1)+f(z_1)a_g(z-z_1)+f(z_1)h_g(z)(z-z_1)\\
+    &+a_fg(z_1)(z-z_1)+a_fa_g(z-z_1)^2+a_fh_g(z)(z-z_1)^2\\
+    &+h_f(z)g(z_1)(z-z_1)+h_f(z)a_g(z-z_1)^2+h_fh_g(z)(z-z_1)^2\\
+    =& fg(z_1)+(f(z_1)a_g+a_fg(z_1))(z-z_1)\\
+    &+ (f(z_1)h_g(z)+a_fa_g(z-z_1)+a_fh_g(z)(z-z_1)\\
+    &\quad +h_f(z)g_(z_1)+h_f(z)a_g(z-z_1)+h_fh_g(z)(z-z_1))(z-z_1)
+\end{align*}
+If we set $a_{fg}=f(z_1)a_g+a_fg(z_1)$ and $h_{fg}$ equal to the third term on the right-hand side of the above equation, then, since $h_f, h_g, h_gh_f, (z-z_1)$ are all continuous at $z_1$ and have a value of zero at $z_1$, by the lemma 1.5, $h_{fg}$ satisfies the condition for differentiability.
+\end{proof}
+
+\begin{exersise}
+[Lemma 1.11]
+If $f:U\to \mathbb{C}$ is differentiable at $c$ and $g:f(U)\to \mathbb{C}$ is differentiable at $f(c)$, then $g\circ f$ is differentiable at $c$ and $(g\circ f)'(c)=g'(f(c))f'(c)$.
+\end{exersise}
+\begin{proof}
+To prove this, we should first prove a lemma regarding the continuity of composition of continuous functions.
+\begin{notebox}
+(Lemma 1.12) Let $A,B,C$ be sets, $f:A\to B$ continuous, and $g:f(A)\to C$ continuous. Then $g\circ f$ is also continuous.
+\end{notebox}
+By the definition of the continuity of functions, for every open set $U\in C$, $g^{-1}(U)$ is open in $B$, and $f^{-1}(g^{-1}(U))$ is open in $A$. Therefore, the lemma holds. Let
+$$f(x) = f(c) + a_f(x-c) + h_f(x)(x-c)$$
+$$g(y) = g(f(c)) + a_g(y-f(c)) + h_g(y)(y-f(c))$$
+Here, $a_f$ and $a_g$ denote the derivatives of $f$ and $g$ at $c$ and $f(c)$, respectively, and $h_f$ and $h_g$ denote continuous functions which are zero at $c$ and $f(c)$, respectively.
+Then,
+\begin{align*}
+    (g\circ f)(x) =& g(f(c)) + a_g(f(x)-f(c)) + h_g(f(x))(f(x)-f(c))\\
+    =&g(f(c))+a_g(f(c)+a_f(x-c)+h_f(x)(x-c)-f(c))\\
+    &+h_g(f(x))(f(c)+a_f(x-c)+h_f(x)(x-c)-f(c))\\
+    =&g(f(c))+a_ga_f(x-c)+(a_gh_f(x)+h_g(f(x))a_f+h_g(f(x))h_f(x))(x-c)
+\end{align*}
+If we set $a_{g\circ f}=a_ga_f$ and $h_{g\circ f}=a_gh_f(x)+h_g(f(x))a_f+h_g(f(x))h_f(x)$, then $h_{g\circ f}$ is continuous by the lemma 1.5 and $h_{g\circ f}(c)=0$. Then, by the theorem 1.8, $g\circ f$ is differentiable at $c$.
+\end{proof}
+
+\clearpage
+
+% \section{HW2}
+% $\varnothing$
+
+
+\end{multicols}
+\end{document}

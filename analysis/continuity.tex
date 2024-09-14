@@ -1,0 +1,225 @@
+\section{CONTINUITY}
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- LIMITS OF FUNCTIONS ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{LIMITS OF FUNCTIONS}
+
+\begin{definition}
+Suppose $X$ and $Y$ are metric spaces, $E\subset X$, $p\in E'$, $f:E\to Y$.
+Then we write $\lim\limits_{x\to p}f(x)=q$ if there is a point $q\in Y$ with following property:
+$$\forall \epsilon>0,\; \exists \delta>0 \text{ s.t. } x\in E\land d_X(x,p)<\delta \Rightarrow d_Y(f(x),q)<\epsilon$$
+\end{definition}
+
+\begin{theorem}
+$\lim\limits_{x\to p}f(x)=q$ \textbf{\emph{if and only if}} $\lim\limits_{n\to \infty}f(p_n)=q$ for every sequence $\{p_n\}$ in $E$ such that $p_n\neq p$ and $\lim\limits_{n\to \infty}p_n=p$.
+\end{theorem}
+\begin{proof}
+\forward Given $\epsilon>0$, there exists $\delta>0$ such that $d_Y(f(x),q)<\epsilon$ if $x\in E$ and $0<d_X(x,p)<\delta$. Also, there exists $N$ such that $n>N$ implies $0<d_X(p_n,p)<\delta$.
+\backward Suppose, for contradiction, that there exists an $\epsilon>0$ such that for every $\delta>0$ there exists a point $x_\delta\in E$, for which $d_Y(f(x_\delta),q)\geq \epsilon$ but $0<d_X(x_\delta,p)<\delta$. Take $\delta_n = 1/n$.
+\end{proof}
+
+\begin{corollary}
+If $f$ has a limit at $p$, this limit is unique.
+\end{corollary}
+
+\begin{theorem}
+Suppose $f,g$ are complex functions on $E$, and $\lim\limits_{x\to p}f(x)=A$, $\lim\limits_{x\to p}g(x)=B$. Then
+\begin{enumerate}[label={(\alph*)}]
+\item $\lim\limits_{x\to p}(f+g)(x) = A+B$;
+\item $\lim\limits_{x\to p}(fg)(x) = AB$;
+\item $\lim\limits_{x\to p}(\frac{f}{g})(x)=\frac{A}{B}$, if $B\neq 0$.
+\end{enumerate}
+\end{theorem}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- CONTINUOUS FUNCTIONS ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{CONTINUOUS FUNCTIONS}
+
+\begin{definition}
+Suppose $X$ and $Y$ are metric space, $E\subset X$, $p\in E$, and $f:E\to Y$. Then $f$ is said to be \textbf{\textcolor{orange}{continuous at $p$}} if
+$$ \forall \epsilon>0,\exists \delta>0 \forall x\in E:d_X(x,p)<\delta \Rightarrow d_Y(f(x),f(p))<\epsilon$$
+\end{definition}
+
+\begin{theorem}
+Assume also that $p\in E\cap E'$. Then $f$ is continuous at $p$ \textbf{\emph{if and only if}} $\lim\limits_{x\to p}f(x)=f(p)$.
+\end{theorem}
+
+\begin{theorem}
+Suppose $X$, $Y$, $Z$ are metric space, $E\subset X$, $f:E\to Y$, $g:f(X)\to Z$, and $h: E\to Z$ given by $h(x)=g(f(x))$ for $x\in E$. If $f$ is continuous at $p\in E$ and $g$ is continuous at $f(p)$, then $h$ is continuous at $p$. $h$ is called the \textbf{\textcolor{orange}{composition}} or \textbf{\textcolor{orange}{composite}} of $f$ and $g$. We write $h = g\circ f$.
+\end{theorem}
+\begin{proof}
+Given $\epsilon>0$, since $g$ is continuous at $f(p)$, $\exists \eta>0$ s.t. $y\in f(E)\land d_Y(y,f(p))<\eta \Rightarrow d_Z(g(y),g(f(p)))<\epsilon$. Since $f$ is continuous at $p$, $\exists \delta>0$ s.t. $x\in E\land d_X(x,p)<\delta \Rightarrow d_Y(f(x),f(p))<\eta$.
+\end{proof}
+
+\begin{theorem} \label{thm:equivalent_definition_of_continuity}
+$f:X\to Y$ is a \textbf{\textcolor{orange}{continuous on $X$}} \textbf{\emph{if and only if}} $f^{-1}(V)$ is open in $X$ for every open set $V$ in $Y$.
+\end{theorem}
+\begin{proof}
+\forward Suppose $p\in E$ and $f(p)\in V\subset Y$. Since $V$ is open, there exists $\epsilon >0$ s.t. $D_Y(f(p),\epsilon)\subset V$. Also, by definition of continuity, there exists $\delta>0$ s.t. $x\in X\land d_X(x,p)<\delta$ implies $d(f(x),f(p))< \epsilon$. Thus $D_X(p,\delta)\subset f^{-1}(V)$, i.e. $p$ is an interior point.
+\backward Given $p\in X$ and $\epsilon>0$, let $V=D_Y(f(p),\epsilon)$. Then $V$ is open in $Y$; hence $f^{-1}(V)$ is open; hence there exists $\delta>0$ such that $(D_X(p,\delta)\cap X)\subset f^{-1}(V)$.
+\end{proof}
+
+\begin{corollary}
+$f$ is continuous \textbf{\emph{if and only if}} $f^{-1}(C)$ is closed in $X$ for every closed set $C$ in $Y$. (Consider that $f^{-1}(E^c)=[f^{-1}(E)]^c$)
+\end{corollary}
+
+\begin{theorem}
+Let $f$ and $g$ be complex continuous functions on a metric space $X$. Then $f+g$, $fg$, $f/g$ are continuous.
+\end{theorem}
+
+\begin{theorem}
+\begin{enumerate}[label={(\alph*)}]
+\item Let $f_1,\dots,f_k$ be real functions on a metric space $X$, and let $f$ be the mapping of $X$ into $\mathbb{R}^k$ defined by $f(x)=(f_1(x),\dots, f_k(x))$. Then $f$ is continuous \textbf{\emph{if and only if}} each of the functions $f_1,\dots,f_k$ is continuous.
+\item If $f$ and $g$ are continuous mapping on $X$ into $\mathbb{R}^k$, then $f+g$ and $f\dot g$ are continuous on $X$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\step{a} 
+\forward $|f_j(x)-f_j(y)| \leq |f(x)-f(y)|$
+\backward Given $x_0\in X$ and $\epsilon>0$, choose $\delta>0$ s.t. $d(x_0,x)<\delta$ implies $d(f_j(x_0), f_j(x))< \epsilon / \sqrt{k}$ for $j=1,\dots, k$.
+\end{proof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- CONTINUITY AND COMPACTNESS ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{CONTINUITY AND COMPACTNESS}
+
+\begin{definition}
+$f:E\to \mathbb{R}^k$ is said to \textbf{\textcolor{orange}{bounded}} if there is a real number $M$ such that $|f(x)|\leq M$ for all $x\in E$.
+\end{definition}
+
+\begin{theorem}
+Let $X$ be a compact metric space, $Y$ a metric space, $f:X\to Y$ continuous. Then $f(X)$ is compact.
+\end{theorem}
+\begin{proof}
+Let $\{V_n\}$ be an open cover of $f[X]$. Then $f^{-1}[V_n]$ is open in $X$; hence there exists a subcover $\{f^{-1}[V_{n_\alpha}]\}$ that covers $X$. Since $f[f^{-1}[E]]\subset E$ for every $E\subset Y$, the assertion holds.
+\end{proof}
+
+\begin{theorem}
+Let $X$ be a compact metric space and suppose $f:X\to \mathbb{R}^k$ be a continuous function. Then $f[X]$ is closed and bounded, meaning that $f$ is bounded.
+\end{theorem}
+
+\begin{theorem}
+Let $X$ be a compact metric space and suppose $f:X\to \mathbb{R}$ be a continuous function. Then there exist the \textbf{\textcolor{orange}{maximum}} point $p$ and \textbf{\textcolor{orange}{minimum}} point $q$ in $X$ such that $f(q)\leq f(x)\leq f(p)$ for all $x\in X$.
+\end{theorem}
+
+\begin{theorem}
+Let $X$ be a compact metric space, $Y$ a metric space, and $f:X\to Y$ a continuous bijection. Then the \textbf{\textcolor{orange}{inverse map}} $f^{-1}:Y\to X$, defined by $f^{-1}(f(x))=x$ for $x\in X$, is continuous.
+\end{theorem}
+\begin{proof}
+Let $V$ be an open set in $X$, then $V^c$ is compact, and so is $f[V^c]$. Since $f[V]=(f[V^c])^c$, $f[V]$ is open. By theorem \Ref{thm:equivalent_definition_of_continuity}, the assertion holds.
+\end{proof}
+
+\begin{definition}
+Let $X$ and $Y$ be metric spaces. We say $f:X\to Y$ \textbf{\textcolor{orange}{uniformly continuous}} on $X$ if
+$$\forall \epsilon>0,\exists \delta>0,\forall p,q\in X:d_X(p,q)<\delta \Rightarrow d_Y(f(p),f(q))<\epsilon$$
+\end{definition}
+
+\begin{theorem}
+Let $X$ be a compact metric space, $Y$ a metric space, $f:X\to Y$ a continuous function. Then $f$ is uniformly continuous on $X$.
+\end{theorem}
+\begin{proof}
+Given $\epsilon>0$, for each $p\in X$ there exists $\delta_p>0$ such that $q\in X$, $d_X(p,q)<\delta_p$ implies $d_Y(f(p),f(q))<\frac{1}{2}\epsilon$. Since the collection $\{D(p,\frac{1}{2}\delta_p)\}$ is an open cover of $X$, there exists a finite subcover $\{D(p_n,\frac{1}{2}\delta_{p_n})\}$. Put $\delta = \frac{1}{2}\min \{D(p_n,\delta_{p_n}/2)\}$. Let $p,q\in X$ such that $d_X(p,q)<\delta$. Then there exists $1\leq m\leq n$ such that $p\in D(p_m,\frac{1}{2}\delta_{p_m})$, which implies $d_X(q,p_m)\leq d_X(p,q)+d_x(p,p_m)<\delta+\frac{1}{2}\delta_{p_m}\leq \delta_{p_m}$. Finally, $d_Y(f(p),f(q))\leq d_Y(f(p),f(p_m))+d_Y(f(p_m),f(q))<\epsilon$.
+\end{proof}
+
+\begin{theorem}
+Let $E$ be a noncompact set in $\mathbb{R}$. Then
+\begin{enumerate}[label={(\alph*)}]
+\item there exists a continuous function on $E$ which is not bounded;
+\item there exists a continuous and bounded function on $E$ which has no maximum;
+\item if $E$ is bounded, then there exists a continuous function on $E$ which is not uniformly continuous
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+If $E$ is bounded, there exists a point $x_0\in E'\backslash E$. 
+\step{a} ($E$ bounded) $f(x)=\frac{1}{x-x_0}$; (unbounded) $f(x)=x$.
+\step{b} ($E$ bounded) $f(x)=\frac{1}{1+(x-x_0)^2}$; (unbounded) $f(x)=\frac{x^2}{1+x^2}$
+\step{c} The first function in (a).
+\end{proof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- CONTINUITY AND CONNECTEDNESS ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{CONTINUITY AND CONNECTEDNESS}
+\begin{theorem}
+Let $X,Y$ be metric spaces, $f:X\to Y$ a continuous map. If $E\subset X$ is connected, the $f[E]$ is connected.
+\end{theorem}
+\begin{proof}
+Let $Y_1$, $Y_2$ be sets which seperate $f[E]$. Then clearly $X_1\subset f^{-1}[Y_1]$, and since $f$ is continuous and $f^{-1}[\overline{Y_1}]$ is closed, $\overline{X_1}\subset f^{-1}[\overline{Y_1}]$. Therefore, $\overline{Y_1}\cap Y_2=\emptyset$ implies $\overline{X_1}\cap X_2=\emptyset$. Similary, $X_1\cap \overline{X_2}=\emptyset$, leading to a contradiction.
+\end{proof}
+
+\begin{corollary}
+(\textbf{\emph{Intermediate value theorem}}) Let $f:[a,b]\to \mathbb{R}$ be continuous. Then $f$ has the \textbf{\textcolor{orange}{intermediate value property}}: If $f(a)<c<f(b)$, then there exists a point $x\in(a,b)$ such that $f(x)=c$.
+\end{corollary}
+
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- DISCONTINUITIES ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{DISCONTINUITIES}
+
+\begin{definition}
+Let $f:(a,b)\to (a,b)$, $a\leq x<b$, and $\{t_n\}$ a sequence in $(x,b)$ such that $t_n\to x$. If $f(t_n)\to q$ as $t_n\to x$, then we write $f(x+)=q$. 
+\end{definition}
+
+\begin{definition}
+Suppose $f$ is discontinuous at a point $x$. If $f(x+)$ and $f(x-)$ exist, then $f$ is said to have a discontinuity of the \textbf{\textcolor{orange}{first kind}}, or a \textbf{\textcolor{orange}{simple discontinuity}} at $x$. Otherwise the discontinuity is said to be of the \textbf{\textcolor{orange}{second kind}}.
+\end{definition}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- MONOTONIC FUNCTIONS ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{MONOTONIC FUNCTIONS}
+\begin{definition}
+Let $f$ be real on $(a,b)$. Then $f$ is said to be \textbf{\textcolor{orange}{monotonically increasing}} on $(a,b)$ if $a<x<y<b$ implies $f(x)\leq f(y)$.
+\end{definition}
+
+\begin{theorem}
+Let $f$ be monotonically inceasing on $(a,b)$. Then for every point $x\in (a,b)$, $\sup\limits_{a<t<x}f(t)=f(x-)\leq f(x)\leq f(x+)=\inf\limits_{x<t<b}f(t)$. Furthermore, if $a<x<y<b$, then $f(x+)\leq f(y-)$.
+\end{theorem}
+\begin{proof}
+Let $A=\sup_{a<t<x}f(t)$. Given $\epsilon>0$, there exists $\delta>0$ such that $A-\epsilon<f(x-\delta)\leq A$. Since $f$ is monotonic, it follows that $A-\epsilon<f(x-\delta)\leq f(t)\leq A$ for $x-\delta<t<x$, i.e., $0<f(t)-A<\epsilon$. The second half of the statement holds since $f(x+) = \inf_{x<t<y}f(t)\leq \sup_{x<t<y}f(t)=f(y-)$.
+\end{proof}
+
+\begin{corollary}
+Monotonic functions have no discontinuities of the seconed kind.
+\end{corollary}
+
+\begin{theorem}
+Let $f$ be monotonic on $(a,b)$. Then the set of points of $(a,b)$ at which $f$ is discontinuous is at most countable.
+\end{theorem}
+\begin{proof}
+Let $E$ be the set of points at which $f$ is discontinuous. Then for each $x\in E$, there exists a rational number $r_x$ such that $f(x-)<r_x<f(x+)$. Since $x_1<x_2\Rightarrow f(x_1+)\leq f(x_2-)$, we see that $r_{x_1}\neq r_{x_2}$ whenever $x_1\neq x_2$. Therefore, we have a bijective mapping between $E$ and the set $\{r_x\}$.
+\end{proof}
+
+\begin{example}
+Let $\{c_n\}$ be a set of positive numbers which $\sum c_n$ converges, $E$ the set of rational number in $(a,b)$ arranged in $\{x_n\}$, and $f(x)=\sum\limits_{x_n<x}c_n$ for $a<x<b$. Then
+\begin{enumerate}[label={(\arabic*)}]
+\item $f$ is monotonically increasing on $(a,b)$;
+\item $f$ is discontinuous at every point of $E$;
+\item $f$ is continuous at every point of $E^c$.
+\end{enumerate}
+\end{example}
+\begin{proof}
+\step{2} $f(x_n+)-f(x_n-)=c_n$.
+\step{3} Given $\epsilon>0$ and $x\in E^c$, choose $N\in \mathbb{Z}^+$ such that $\sum\limits_{n=N+1}^\infty < \epsilon$. Let $\delta = \min \{|x-x_n|:1\leq n\leq N\}$ ($\delta>0$ because $x\in E^c$). Then $|x-y|<\delta$ implies $|f(x)-f(y)|\leq \sum_{n=N+1}^\infty c_n<\epsilon$ (if $|x-y|<\delta$, then $x_n$ does not lies in the interval $x$ and $y$, i.e., $c_n$ does not appear in the difference).
+\end{proof}
+
+% ---------- ---------- ---------- ---------- ----------
+% ---------- ---------- INFINITE LIMITS AND LIMITS AT INFINITY ---------- ----------
+% ---------- ---------- ---------- ---------- ----------
+\subsection{INFINITE LIMITS AND LIMITS AT INFINITY}
+\begin{notebox}
+The concept of 'neighborhood' is extended to infinity, but I am not sure where it is applied.
+\end{notebox}
+
+\begin{definition}
+For any $c\in \mathbb{R}$, $(c,+\infty)$ is a neighborhood of $+\infty$. The same applies to $-\infty$.
+\end{definition}
+
+\begin{definition}
+$f(t)\to A$ as $t\to x$ where $A$ and $x$ are in the extended real number system, if for every neighborhood $U$ of $A$, there is a neighborhood $V$ of $x$ such that $V\cap E$ is not empty and $f(t)\in U$ for all $t\in V\cap E$, $t\neq x$.
+\end{definition}
+
+\clearpage
